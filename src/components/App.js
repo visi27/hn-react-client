@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
+import Search from './Search'
+import Table from './Table'
 import './App.css'
+import Button from './Button'
 
 const list = [
   {
@@ -20,10 +23,6 @@ const list = [
   },
 ]
 
-const isSearched = searchTerm => item =>
-     item.title.toLowerCase().includes(searchTerm.toLowerCase())
-
-
 class App extends Component {
   constructor (props) {
     super(props)
@@ -38,31 +37,24 @@ class App extends Component {
   }
 
   render () {
+    const {searchTerm, list} = this.state
     return (
-      <div className="App">
-        <form>
-          <input type="text" onChange={this.onSearchChange}/>
-          <button type="button" onClick={this.onReset}>RESET</button>
-        </form>
-        {
-          this.state.list.filter(isSearched(this.state.searchTerm)).map(item =>
-            <div key={item.objectID}>
-                <span>
-                  <a href={item.url}>{item.title}</a>
-                </span>
-              <span>{item.author}</span>
-              <span>{item.num_comments}</span>
-              <span>{item.points}</span>
-              <button
-                type="button"
-                onClick={() => this.onDismiss(item.objectID)}
-              >
-                Dismiss
-              </button>
-            </div>,
-          )
-        }
-        <button type="button" onClick={this.onAdd}>ADD</button>
+      <div className="page">
+        <div className="interactions">
+          <Search
+            searchTerm={searchTerm}
+            onSearchChange={this.onSearchChange}
+            onReset={this.onReset}
+          >
+            Search
+          </Search>
+        </div>
+        <Table
+          list={list}
+          searchTerm={searchTerm}
+          onDismiss={this.onDismiss}
+        />
+        <Button onClick={this.onAdd}>ADD</Button>
       </div>
     )
   }
