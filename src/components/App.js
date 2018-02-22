@@ -2,42 +2,34 @@ import React, { Component } from 'react'
 import Search from './Search'
 import Table from './Table'
 import './App.css'
-import Button from './Button'
 
-const list = [
-  {
-    title: 'React',
-    url: 'https://facebook.github.io/react/',
-    author: 'Jordan Walke',
-    num_comments: 3,
-    points: 4,
-    objectID: 0,
-  },
-  {
-    title: 'Redux',
-    url: 'https://github.com/reactjs/redux',
-    author: 'Dan Abramov, Andrew Clark',
-    num_comments: 2,
-    points: 5,
-    objectID: 1,
-  },
-]
+const DEFAULT_QUERY = 'redux'
+const PATH_BASE = 'https://hn.algolia.com/api/v1'
+const PATH_SEARCH = '/search'
+const PARAM_SEARCH = 'query='
 
 class App extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      list,
-      searchTerm: '',
+      searchTerm: DEFAULT_QUERY,
     }
+    this.setSearchTopStories = this.setSearchTopStories.bind(this)
+    this.fetchSearchTopStories = this.fetchSearchTopStories.bind(this)
     this.onDismiss = this.onDismiss.bind(this)
-    this.onAdd = this.onAdd.bind(this)
     this.onSearchChange = this.onSearchChange.bind(this)
     this.onReset = this.onReset.bind(this)
   }
 
+  componentDidMount () {
+    const {searchTerm} = this.state
+    this.fetchSearchTopStories(searchTerm)
+  }
+
   render () {
-    const {searchTerm, list} = this.state
+    const {searchTerm, result} = this.state
+    console.log(result)
+    if (!result) { return null }
     return (
       <div className="page">
         <div className="interactions">
@@ -50,35 +42,32 @@ class App extends Component {
           </Search>
         </div>
         <Table
-          list={list}
+          list={result.hits}
           searchTerm={searchTerm}
           onDismiss={this.onDismiss}
         />
-        <Button onClick={this.onAdd}>ADD</Button>
       </div>
     )
   }
 
-  onDismiss (itemId) {
-    this.setState({
-      list: this.state.list.filter(item => {
-        return item.objectID !== itemId
-      }),
-    })
+  setSearchTopStories (result) {
+    this.setState({result})
   }
 
-  onAdd () {
-    const newItem = {
-      title: 'Random',
-      url: 'https://github.com/random/random',
-      author: 'Random, Unknown',
-      num_comments: Math.floor(Math.random() * 20),
-      points: Math.floor(Math.random() * 10),
-      objectID: Math.floor(Math.random() * 1000),
-    }
+  fetchSearchTopStories (searchTerm) {
+    fetch(`${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${searchTerm}`)
+      .then(response => response.json())
+      .then(result => this.setSearchTopStories(result))
+      .catch(e => e)
+  }
+
+  onDismiss (itemId) {
+    const updatedHits = this.state.result.hits.filter(item => {
+      return item.objectID !== itemId
+    })
 
     this.setState({
-      list: [...this.state.list, newItem],
+      result: {...this.state.result, hits: updatedHits},
     })
   }
 
@@ -88,7 +77,7 @@ class App extends Component {
 
   onReset () {
     this.setState({
-      list,
+      result: [],
       searchTerm: '',
     })
   }
