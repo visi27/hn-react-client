@@ -1,17 +1,17 @@
-import React, { Component } from "react";
-import Search from "./Search";
-import Table from "./Table";
-import "./App.css";
-import Button from "./Button";
+import React, { Component } from 'react';
+import Search from './Search';
+import Table from './Table';
+import './App.css';
+import Button from './Button';
 
-const DEFAULT_QUERY = "redux";
-const DEFAULT_HPP = "100";
+const DEFAULT_QUERY = 'redux';
+const DEFAULT_HPP = '100';
 
-const PATH_BASE = "https://hn.algolia.com/api/v1";
-const PATH_SEARCH = "/search";
-const PARAM_SEARCH = "query=";
-const PARAM_PAGE = "page=";
-const PARAM_HPP = "hitsPerPage=";
+const PATH_BASE = 'https://hn.algolia.com/api/v1';
+const PATH_SEARCH = '/search';
+const PARAM_SEARCH = 'query=';
+const PARAM_PAGE = 'page=';
+const PARAM_HPP = 'hitsPerPage=';
 
 class App extends Component {
   constructor(props) {
@@ -59,18 +59,10 @@ class App extends Component {
             <p>Application Error: {error.message}</p>
           </div>
         ) : (
-          result && (
-            <Table
-              list={result.hits}
-              searchTerm={searchTerm}
-              onDismiss={this.onDismiss}
-            />
-          )
+          result && <Table list={result.hits} searchTerm={searchTerm} onDismiss={this.onDismiss} />
         )}
 
-        {currentPage < totPages && (
-          <Button onClick={this.nextPage}> More Articles </Button>
-        )}
+        {currentPage < totPages && <Button onClick={this.nextPage}> More Articles </Button>}
       </div>
     );
   }
@@ -98,7 +90,7 @@ class App extends Component {
       if (!cache[this.state.searchTerm]) {
         cache[this.state.searchTerm] = { pages: [] };
       }
-      cache[this.state.searchTerm]["pages"][page] = result;
+      cache[this.state.searchTerm]['pages'][page] = result;
     }
 
     this.setState({
@@ -110,8 +102,8 @@ class App extends Component {
   fetchSearchTopStories(searchTerm, currentPage) {
     const { cache } = this.state;
 
-    cache[searchTerm] && cache[searchTerm]["pages"][currentPage]
-      ? this.setSearchTopStories(cache[searchTerm]["pages"][currentPage])
+    cache[searchTerm] && cache[searchTerm]['pages'][currentPage]
+      ? this.setSearchTopStories(cache[searchTerm]['pages'][currentPage])
       : fetch(
           `${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${searchTerm}&${PARAM_PAGE}${currentPage}&${PARAM_HPP}${DEFAULT_HPP}`
         )
@@ -144,7 +136,7 @@ class App extends Component {
   onReset() {
     this.setState({
       result: [],
-      searchTerm: ""
+      searchTerm: ''
     });
   }
 }
