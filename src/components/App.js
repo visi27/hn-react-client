@@ -18,6 +18,7 @@ class App extends Component {
     this.fetchSearchTopStories = this.fetchSearchTopStories.bind(this)
     this.onDismiss = this.onDismiss.bind(this)
     this.onSearchChange = this.onSearchChange.bind(this)
+    this.onSearchSubmit = this.onSearchSubmit.bind(this)
     this.onReset = this.onReset.bind(this)
   }
 
@@ -28,24 +29,27 @@ class App extends Component {
 
   render () {
     const {searchTerm, result} = this.state
-    console.log(result)
-    if (!result) { return null }
+
     return (
       <div className="page">
         <div className="interactions">
           <Search
             searchTerm={searchTerm}
             onSearchChange={this.onSearchChange}
+            onSearchSubmit={this.onSearchSubmit}
             onReset={this.onReset}
           >
             Search
           </Search>
         </div>
-        <Table
-          list={result.hits}
-          searchTerm={searchTerm}
-          onDismiss={this.onDismiss}
-        />
+        {
+          result &&
+          <Table
+            list={result.hits}
+            searchTerm={searchTerm}
+            onDismiss={this.onDismiss}
+          />
+        }
       </div>
     )
   }
@@ -73,6 +77,12 @@ class App extends Component {
 
   onSearchChange (event) {
     this.setState({searchTerm: event.target.value})
+  }
+
+  onSearchSubmit (event) {
+    const { searchTerm } = this.state
+    this.fetchSearchTopStories(searchTerm)
+    event.preventDefault()
   }
 
   onReset () {
