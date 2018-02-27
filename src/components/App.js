@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import Search from './Search';
-import Table from './Table';
+import Search from './Search/';
+import Table from './Table/index';
 import './App.css';
-import Button from './Button';
+import Button from './Button/';
+import fetch from 'isomorphic-fetch';
 
 const DEFAULT_QUERY = 'redux';
 const DEFAULT_HPP = '100';
@@ -44,6 +45,7 @@ class App extends Component {
 
     return (
       <div className="page">
+        <span>HELLO</span>
         <div className="interactions">
           <Search
             searchTerm={searchTerm}
@@ -59,10 +61,18 @@ class App extends Component {
             <p>Application Error: {error.message}</p>
           </div>
         ) : (
-          result && <Table list={result.hits} searchTerm={searchTerm} onDismiss={this.onDismiss} />
+          result && (
+            <Table
+              list={result.hits}
+              searchTerm={searchTerm}
+              onDismiss={this.onDismiss}
+            />
+          )
         )}
 
-        {currentPage < totPages && <Button onClick={this.nextPage}> More Articles </Button>}
+        {currentPage < totPages && (
+          <Button onClick={this.nextPage}> More Articles </Button>
+        )}
       </div>
     );
   }

@@ -1,6 +1,6 @@
-import React from "react";
-import Button from "../Button";
-import * as style from "./style";
+import React from 'react';
+import Button from '../Button/';
+import * as style from './style';
 
 const Item = ({ item, onDismiss }) => (
   <div key={item.objectID} className="table-row">

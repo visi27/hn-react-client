@@ -1,5 +1,5 @@
-import React from "react";
-import Item from "./Item/index";
+import React from 'react';
+import Item from '../Item/index';
 
 const Table = ({ list, searchTerm, onDismiss }) => (
   <div className="table">

@@ -1,5 +1,5 @@
-import React from "react";
-import Button from "./Button";
+import React from 'react';
+import Index from '../Button/';
 
 const Search = ({
   searchTerm,
@@ -11,7 +11,7 @@ const Search = ({
   <form onSubmit={onSearchSubmit}>
     {children}
     <input type="text" value={searchTerm} onChange={onSearchChange} />
-    <Button onClick={onReset}>RESET</Button>
+    <Index onClick={onReset}>RESET</Index>
   </form>
 );
 
