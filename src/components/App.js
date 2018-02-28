@@ -1,3 +1,5 @@
+// @flow
+
 import React, { Component } from 'react';
 import Search from './Search/';
 import Table from './Table/index';
@@ -14,13 +16,44 @@ const PARAM_SEARCH = 'query=';
 const PARAM_PAGE = 'page=';
 const PARAM_HPP = 'hitsPerPage=';
 
-class App extends Component {
-  constructor(props) {
+type Props = {
+  foo: number
+};
+
+type State = {
+  searchTerm: string,
+  currentPage: number,
+  result: Result,
+  cache: Object,
+  error: ?Object
+};
+
+type Result = {
+  hits: Object,
+  page: number,
+  nbPages: number
+};
+
+class App extends Component<Props, State> {
+  setSearchTopStories: (result: Result, updateCache: boolean) => void;
+  fetchSearchTopStories: (searchTerm: string, currentPage: number) => void;
+  onDismiss: () => void;
+  onSearchChange: () => void;
+  onSearchSubmit: () => void;
+  onReset: () => void;
+  nextPage: () => void;
+
+  constructor(props: Props) {
     super(props);
     this.state = {
       searchTerm: DEFAULT_QUERY,
       currentPage: 0,
       cache: {},
+      result: {
+        hits: {},
+        page: 0,
+        nbPages: 0
+      },
       error: null
     };
 
@@ -90,7 +123,7 @@ class App extends Component {
     this.fetchSearchTopStories(searchTerm, currentPage + 1);
   }
 
-  setSearchTopStories(result, updateCache = false) {
+  setSearchTopStories(result: Result, updateCache: boolean) {
     const { hits, page, nbPages } = result;
     const oldHits = page !== 0 ? this.state.result.hits : [];
     const updatedHits = [...oldHits, ...hits];
@@ -109,11 +142,11 @@ class App extends Component {
     });
   }
 
-  fetchSearchTopStories(searchTerm, currentPage) {
+  fetchSearchTopStories(searchTerm: string, currentPage: number) {
     const { cache } = this.state;
 
     cache[searchTerm] && cache[searchTerm]['pages'][currentPage]
-      ? this.setSearchTopStories(cache[searchTerm]['pages'][currentPage])
+      ? this.setSearchTopStories(cache[searchTerm]['pages'][currentPage], false)
       : fetch(
           `${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${searchTerm}&${PARAM_PAGE}${currentPage}&${PARAM_HPP}${DEFAULT_HPP}`
         )
@@ -122,7 +155,7 @@ class App extends Component {
           .catch(e => this.setState({ error: e }));
   }
 
-  onDismiss(itemId) {
+  onDismiss(itemId: number) {
     const updatedHits = this.state.result.hits.filter(item => {
       return item.objectID !== itemId;
     });
@@ -132,11 +165,11 @@ class App extends Component {
     });
   }
 
-  onSearchChange(event) {
+  onSearchChange(event: Object) {
     this.setState({ searchTerm: event.target.value });
   }
 
-  onSearchSubmit(event) {
+  onSearchSubmit(event: Object) {
     this.setState({ currentPage: 0 });
     const { searchTerm } = this.state;
     this.fetchSearchTopStories(searchTerm, 0);
@@ -145,7 +178,11 @@ class App extends Component {
 
   onReset() {
     this.setState({
-      result: [],
+      result: {
+        hits: {},
+        page: 0,
+        nbPages: 0
+      },
       searchTerm: ''
     });
   }
