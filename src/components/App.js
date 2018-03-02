@@ -5,7 +5,6 @@ import Search from './Search/';
 import Table from './Table/index';
 import './App.css';
 import Button from './Button/';
-import fetch from 'isomorphic-fetch';
 
 const DEFAULT_QUERY = 'redux';
 const DEFAULT_HPP = '100';
@@ -29,7 +28,7 @@ type State = {
 };
 
 type Result = {
-  hits: Object,
+  hits: Array<Object>,
   page: number,
   nbPages: number
 };
@@ -50,7 +49,7 @@ class App extends Component<Props, State> {
       currentPage: 0,
       cache: {},
       result: {
-        hits: {},
+        hits: [],
         page: 0,
         nbPages: 0
       },
@@ -73,7 +72,6 @@ class App extends Component<Props, State> {
 
   render() {
     const { searchTerm, result, currentPage, error } = this.state;
-
     const totPages = result ? result.nbPages : 0;
 
     return (
@@ -94,7 +92,7 @@ class App extends Component<Props, State> {
             <p>Application Error: {error.message}</p>
           </div>
         ) : (
-          result && (
+          result.hits.length > 0 && (
             <Table
               list={result.hits}
               searchTerm={searchTerm}
@@ -179,7 +177,7 @@ class App extends Component<Props, State> {
   onReset() {
     this.setState({
       result: {
-        hits: {},
+        hits: [],
         page: 0,
         nbPages: 0
       },
