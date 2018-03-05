@@ -12,7 +12,7 @@ exports[`Search has a valid snapshot 1`] = `
   />
   <button
     className="button-inline"
-    onClick={undefined}
+    onClick={[Function]}
     type="button"
   >
     RESET

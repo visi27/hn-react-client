@@ -1,5 +1,6 @@
 import React from 'react';
-import Index from '../Button/';
+import Button from '../Button/';
+import PropTypes from 'prop-types';
 
 const Search = ({
   searchTerm,
@@ -11,8 +12,16 @@ const Search = ({
   <form onSubmit={onSearchSubmit}>
     {children}
     <input type="text" value={searchTerm} onChange={onSearchChange} />
-    <Index onClick={onReset}>RESET</Index>
+    <Button onClick={onReset}>RESET</Button>
   </form>
 );
+
+Search.propTypes = {
+  searchTerm: PropTypes.string.isRequired,
+  onSearchChange: PropTypes.func.isRequired,
+  onSearchSubmit: PropTypes.func.isRequired,
+  onReset: PropTypes.func.isRequired,
+  children: PropTypes.string
+};
 
 export default Search;

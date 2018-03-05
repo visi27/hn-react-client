@@ -19,18 +19,18 @@ type Props = {
   foo: number
 };
 
+type Result = {
+  hits: Array<Object>,
+  page: number,
+  nbPages: number
+};
+
 type State = {
   searchTerm: string,
   currentPage: number,
   result: Result,
   cache: Object,
   error: ?Object
-};
-
-type Result = {
-  hits: Array<Object>,
-  page: number,
-  nbPages: number
 };
 
 class App extends Component<Props, State> {
