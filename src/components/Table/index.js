@@ -28,7 +28,7 @@ class Table extends Component {
     const {list, onDismiss} = this.props;
     const {sortKey, isSortReversed} = this.state;
 
-    const sortedList = isSortReversed ? SORTS[sortKey](list) : SORTS[sortKey](list).reverse();
+    const sortedList = isSortReversed && (sortKey !== 'NONE') ? SORTS[sortKey](list) : SORTS[sortKey](list).reverse();
     return (
       <div className="table">
         <Header onSort={this.onSort} activeSort={sortKey}/>

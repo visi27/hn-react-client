@@ -76,7 +76,7 @@ class App extends Component<Props, State> {
   }
 
   render () {
-    const { searchTerm, result, currentPage, error, isLoading } = this.state;
+    const {searchTerm, result, currentPage, error, isLoading} = this.state;
     const totPages = result ? result.nbPages : 0;
 
     return (
@@ -131,22 +131,8 @@ class App extends Component<Props, State> {
 
   setSearchTopStories (result: Result, updateCache: boolean) {
     const {hits, page, nbPages} = result;
-    const oldHits = page !== 0 ? this.state.result.hits : [];
-    const updatedHits = [...oldHits, ...hits];
 
-    let {cache} = this.state;
-    if (updateCache) {
-      if (!cache[this.state.searchTerm]) {
-        cache[this.state.searchTerm] = {pages: []};
-      }
-      cache[this.state.searchTerm]['pages'][page] = result;
-    }
-
-    this.setState({
-      result: {hits: updatedHits, page, nbPages},
-      cache: cache,
-      isLoading: false,
-    });
+    this.setState(updateSearchTopStoriesState(hits, page, nbPages, updateCache));
   }
 
   fetchSearchTopStories (searchTerm: string, currentPage: number) {
@@ -195,5 +181,25 @@ class App extends Component<Props, State> {
     });
   }
 }
+
+const updateSearchTopStoriesState = (hits, page, nbPages, updateCache) => (prevState: State) => {
+
+    const oldHits = page !== 0 ? prevState.result.hits : [];
+    const updatedHits = [...oldHits, ...hits];
+
+    let {cache} = prevState;
+    if (updateCache) {
+      if (!cache[prevState.searchTerm]) {
+        cache[prevState.searchTerm] = {pages: []};
+      }
+      cache[prevState.searchTerm]['pages'][page] = {hits, page, nbPages};
+    }
+
+    return {
+      result: {hits: updatedHits, page, nbPages},
+      cache: cache,
+      isLoading: false,
+    };
+};
 
 export default App;
