@@ -14,7 +14,10 @@ describe('Table', () => {
       { title: '1', author: '1', num_comments: 1, points: 2, objectID: 'y' },
       { title: '2', author: '2', num_comments: 1, points: 2, objectID: 'z' }
     ],
-    onDismiss: () => {}
+    onDismiss: () => {},
+    onSort: () => {},
+    sortKey: 'NONE',
+    isSortReversedL: false
   };
 
   it('renders without crashing', () => {
@@ -31,5 +34,10 @@ describe('Table', () => {
   it('shows two items on the list', () => {
     const element = mount(<Table {...props} />);
     expect(element.find('.table-row').length).toBe(2);
+  });
+
+  it('shows one header on the list', () => {
+    const element = mount(<Table {...props} />);
+    expect(element.find('.table-header').length).toBe(1);
   });
 });

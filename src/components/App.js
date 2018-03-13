@@ -34,7 +34,9 @@ type State = {
   result: Result,
   cache: Object,
   error: ?Object,
-  isLoading: boolean
+  isLoading: boolean,
+  sortKey: string,
+  isSortReversed: boolean
 };
 
 class App extends Component<Props, State> {
@@ -45,6 +47,7 @@ class App extends Component<Props, State> {
   onSearchSubmit: () => void;
   onReset: () => void;
   nextPage: () => void;
+  onSort: () => void;
 
   constructor (props: Props) {
     super(props);
@@ -59,6 +62,8 @@ class App extends Component<Props, State> {
       },
       error: null,
       isLoading: false,
+      sortKey: 'NONE',
+      isSortReversed: false,
     };
 
     this.setSearchTopStories = this.setSearchTopStories.bind(this);
@@ -68,6 +73,7 @@ class App extends Component<Props, State> {
     this.onSearchSubmit = this.onSearchSubmit.bind(this);
     this.onReset = this.onReset.bind(this);
     this.nextPage = this.nextPage.bind(this);
+    this.onSort = this.onSort.bind(this);
   }
 
   componentDidMount () {
@@ -76,10 +82,8 @@ class App extends Component<Props, State> {
   }
 
   render () {
-    const {searchTerm, result, currentPage, error, isLoading} = this.state;
+    const {searchTerm, result, currentPage, error, isLoading, sortKey, isSortReversed} = this.state;
     const totPages = result ? result.nbPages : 0;
-
-
 
     return (
       <div className="page">
@@ -104,12 +108,14 @@ class App extends Component<Props, State> {
               list={result.hits}
               searchTerm={searchTerm}
               onDismiss={this.onDismiss}
+              sortKey={sortKey}
+              isSortReversed={isSortReversed}
+              onSort={this.onSort}
             />
           )
         )}
 
         {currentPage < totPages && (
-
           <ButtonWithLoading onClick={this.nextPage} isLoading={isLoading}>
             More Articles
           </ButtonWithLoading>
@@ -160,10 +166,10 @@ class App extends Component<Props, State> {
       ? this.setSearchTopStories(cache[searchTerm]['pages'][currentPage], false)
       : fetch(
       `${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${searchTerm}&${PARAM_PAGE}${currentPage}&${PARAM_HPP}${DEFAULT_HPP}`,
-      ).
-        then(response => response.json()).
-        then(result => this.setSearchTopStories(result, true)).
-        catch(e => this.setState({error: e}));
+      )
+        .then(response => response.json())
+        .then(result => this.setSearchTopStories(result, true))
+        .catch(e => this.setState({error: e}));
   }
 
   onDismiss (itemId: number) {
@@ -196,6 +202,14 @@ class App extends Component<Props, State> {
       },
       searchTerm: '',
     });
+  }
+
+  onSort (newSortKey: string) {
+    const {sortKey, isSortReversed} = this.state;
+
+    // If new sort key is the same as old sort key treat the click as reversing sort direction.
+    const shouldSortRevers = (sortKey === newSortKey) ? !isSortReversed : isSortReversed;
+    this.setState({sortKey: newSortKey, isSortReversed: shouldSortRevers});
   }
 }
 

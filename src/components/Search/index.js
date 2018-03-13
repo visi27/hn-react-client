@@ -3,10 +3,6 @@ import Button from '../Button/';
 import PropTypes from 'prop-types';
 
 class Search extends Component {
-  constructor (props) {
-    super(props);
-  }
-
   componentDidMount() {
     if(this.textInput) {
       this.textInput.focus();
