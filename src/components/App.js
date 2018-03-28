@@ -10,9 +10,9 @@ import withLoading from '../hoc/withLoading';
 const DEFAULT_QUERY = 'redux';
 const DEFAULT_HPP = '20';
 
-const PATH_BASE = 'https://hn.algolia.com/api/v1';
+const PATH_BASE = 'http://symfony.local:8080/api/v1.0/hn';
 const PATH_SEARCH = '/search';
-const PARAM_SEARCH = 'query=';
+const PARAM_SEARCH = 'term=';
 const PARAM_PAGE = 'page=';
 const PARAM_HPP = 'hitsPerPage=';
 
@@ -184,22 +184,22 @@ class App extends Component<Props, State> {
 
 const updateSearchTopStoriesState = (hits, page, nbPages, updateCache) => (prevState: State) => {
 
-    const oldHits = page !== 0 ? prevState.result.hits : [];
-    const updatedHits = [...oldHits, ...hits];
+  const oldHits = page !== 0 ? prevState.result.hits : [];
+  const updatedHits = [...oldHits, ...hits];
 
-    let {cache} = prevState;
-    if (updateCache) {
-      if (!cache[prevState.searchTerm]) {
-        cache[prevState.searchTerm] = {pages: []};
-      }
-      cache[prevState.searchTerm]['pages'][page] = {hits, page, nbPages};
+  let {cache} = prevState;
+  if (updateCache) {
+    if (!cache[prevState.searchTerm]) {
+      cache[prevState.searchTerm] = {pages: []};
     }
+    cache[prevState.searchTerm]['pages'][page] = {hits, page, nbPages};
+  }
 
-    return {
-      result: {hits: updatedHits, page, nbPages},
-      cache: cache,
-      isLoading: false,
-    };
+  return {
+    result: {hits: updatedHits, page, nbPages},
+    cache: cache,
+    isLoading: false,
+  };
 };
 
 export default App;
