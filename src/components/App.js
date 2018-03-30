@@ -7,14 +7,7 @@ import './App.css';
 import Button from './Button/';
 import withLoading from '../hoc/withLoading';
 
-const DEFAULT_QUERY = 'redux';
-const DEFAULT_HPP = '20';
-
-const PATH_BASE = 'http://symfony.local:8080/api/v1.0/hn';
-const PATH_SEARCH = '/search';
-const PARAM_SEARCH = 'term=';
-const PARAM_PAGE = 'page=';
-const PARAM_HPP = 'hitsPerPage=';
+import { AppConfig as conf } from '../config';
 
 const ButtonWithLoading = withLoading(Button);
 
@@ -49,7 +42,7 @@ class App extends Component<Props, State> {
   constructor (props: Props) {
     super(props);
     this.state = {
-      searchTerm: DEFAULT_QUERY,
+      searchTerm: conf.DEFAULT_QUERY,
       currentPage: 0,
       cache: {},
       result: {
@@ -142,7 +135,7 @@ class App extends Component<Props, State> {
     cache[searchTerm] && cache[searchTerm]['pages'][currentPage]
       ? this.setSearchTopStories(cache[searchTerm]['pages'][currentPage], false)
       : fetch(
-      `${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${searchTerm}&${PARAM_PAGE}${currentPage}&${PARAM_HPP}${DEFAULT_HPP}`,
+      `${conf.PATH_BASE}${conf.PATH_SEARCH}?${conf.PARAM_SEARCH}${searchTerm}&${conf.PARAM_PAGE}${currentPage}&${conf.PARAM_HPP}${conf.DEFAULT_HPP}`,
       )
         .then(response => response.json())
         .then(result => this.setSearchTopStories(result, true))
