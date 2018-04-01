@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search has a valid snapshot 1`] = `
+<form
+  onSubmit={[Function]}
+>
+  Search
+  <input
+    onChange={[Function]}
+    type="text"
+    value="redux"
+  />
+  <button
+    className="button-inline"
+    onClick={[Function]}
+    type="button"
+  >
+    RESET
+  </button>
+</form>
+`;
