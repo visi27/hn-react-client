@@ -6,10 +6,16 @@ import Button from "./Button/";
 import withLoading from "../hoc/withLoading";
 
 import { AppConfig as conf } from "../config";
+import { fetchResults } from '../actions/result';
+import { connect } from 'react-redux';
 
 const ButtonWithLoading = withLoading(Button);
 
 class App extends Component {
+  componentDidMount() {
+    this.props.onLoad();
+  }
+
   render() {
     return (
       <div className="page">
@@ -28,4 +34,10 @@ class App extends Component {
   }
 }
 
-export default App;
+function mapDispatchToProps (dispatch) {
+  return {
+    onLoad: () => dispatch(fetchResults())
+  }
+}
+
+export default connect(null, mapDispatchToProps)(App);
