@@ -1,4 +1,4 @@
-export const RESULT_SET = "RESULT_SET";
+export const RESULT_FETCH = "RESULT_FETCH";
 export const CACHE_SET = "CACHE_SET";
 
 export const ERROR_SET = 'ERROR_SET';
