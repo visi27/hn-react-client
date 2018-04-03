@@ -1,8 +1,6 @@
 import * as actionTypes from "../constants/actionTypes";
-import { AppConfig as conf } from "../config";
 
 const initialState = {
-  searchTerm: conf.DEFAULT_QUERY,
   currentPage: 0,
   isLoading: false,
 };
