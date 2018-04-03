@@ -15,6 +15,6 @@ const Table = ({result}) => {
       }
     </div>
   );
-}
+};
 
 export default Table;
