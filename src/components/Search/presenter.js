@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import Button from '../Button';
 
 class Search extends Component {
-  componentDidMount() {
-    if(this.textInput) {
+  componentDidMount () {
+    if (this.textInput) {
       this.textInput.focus();
     }
   }
@@ -12,10 +12,14 @@ class Search extends Component {
     const {children, searchTerm, onSearchChange} = this.props;
 
     return (
-      <form>
+      <form onSubmit={e => e.preventDefault()}>
         {children}
-        <input type="text" defaultValue={searchTerm} onChange={onSearchChange}
-               ref={(input) => {this.textInput = input;}}/>
+        <input
+          type="text"
+          defaultValue={searchTerm}
+          onChange={onSearchChange}
+          ref={(input) => {this.textInput = input;}}
+        />
         <Button>RESET</Button>
       </form>
     );
