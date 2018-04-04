@@ -17,7 +17,7 @@ describe('Search', () => {
     children: 'Search'
   };
 
-  it('renders without cashing', () => {
+  it('renders without crashing', () => {
     const div = document.createElement('div');
     ReactDOM.render(<Search {...props} />, div);
   });
