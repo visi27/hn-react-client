@@ -1,20 +1,18 @@
 import * as actionTypes from "../constants/actionTypes";
+import { AppConfig as conf } from "../config";
+
 
 const initialState = {
-  currentPage: 0,
-  isLoading: false,
+  searchTerm:  conf.DEFAULT_QUERY
 };
 
 export default function(state = initialState, action) {
   switch (action.type) {
     case actionTypes.SEARCH_SET:
-      return state;
-    case actionTypes.CURRENT_PAGE_SET:
-      return state;
-    case actionTypes.LOADING_TOGGLE:
-      return state;
+      return {
+        searchTerm: action.searchTerm
+      };
     default:
       return state;
   }
 }
-
