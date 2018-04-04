@@ -1,18 +1,25 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Button from '../Button';
 
-const Search = ({children, searchTerm, onSearchChange}) => {
-  let textInput = null;
-  return (
-    <form>
-      {children}
-      <input type="text" onChange={onSearchChange} defaultValue={searchTerm}
-             ref={(input) => {
-               textInput = input;
-             }}/>
-      <Button>RESET</Button>
-    </form>
-  );
-};
+class Search extends Component {
+  componentDidMount() {
+    if(this.textInput) {
+      this.textInput.focus();
+    }
+  }
+
+  render () {
+    const {children, searchTerm, onSearchChange} = this.props;
+
+    return (
+      <form>
+        {children}
+        <input type="text" defaultValue={searchTerm} onChange={onSearchChange}
+               ref={(input) => {this.textInput = input;}}/>
+        <Button>RESET</Button>
+      </form>
+    );
+  }
+}
 
 export default Search;
