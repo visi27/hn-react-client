@@ -1,11 +1,20 @@
 import React from 'react';
-import { connect } from 'react-redux'
-import Table from './presenter';
+import Header from '../Header';
+import Item from '../Item';
 
-function mapStateToProps (state) {
-  const { result } = state;
+const Table = ({result}) => {
+  return (
+    <div className="table">
+      <Header/>
+      {
+        result.hits.map((item, key) => {
+          return (
+            <Item key={key} item={item}/>
+          );
+        })
+      }
+    </div>
+  );
+};
 
-  return { result }
-}
-
-export default connect(mapStateToProps, null)(Table)
+export default Table;

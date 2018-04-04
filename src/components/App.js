@@ -1,22 +1,23 @@
-import React, { Component } from "react";
-import Search from "./Search/index";
-import Table from "./Table/index";
-import "./App.css";
-import Button from "./Button/";
-import withLoading from "../hoc/withLoading";
+import React, { Component } from 'react';
+import Search from './Search/index';
+import Table from './Table/index';
+import './App.css';
+import Button from './Button/';
+import withLoading from '../hoc/withLoading';
 
-import { AppConfig as conf } from "../config";
+//import { AppConfig as conf } from '../config';
 import { fetchResults } from '../actions/result';
 import { connect } from 'react-redux';
 
 const ButtonWithLoading = withLoading(Button);
 
 class App extends Component {
-  componentDidMount() {
+  componentDidMount () {
     this.props.onLoad();
   }
 
-  render() {
+  render () {
+    const {result} = this.props;
     return (
       <div className="page">
         <span>HELLO</span>
@@ -24,7 +25,7 @@ class App extends Component {
           <Search> Search </Search>
         </div>
 
-        <Table/>
+        <Table result={result}/>
 
         <ButtonWithLoading>
           More Articles
@@ -36,8 +37,15 @@ class App extends Component {
 
 function mapDispatchToProps (dispatch) {
   return {
-    onLoad: () => dispatch(fetchResults())
-  }
+    onLoad: () => dispatch(fetchResults()),
+  };
 }
 
-export default connect(null, mapDispatchToProps)(App);
+function mapStateToProps (state) {
+  const {result} = {...state};
+  return {
+    result,
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
