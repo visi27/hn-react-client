@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Search from './Search/index';
-import Table from './Table/index';
+import Table from './Table/presenter';
 import './App.css';
 import Button from './Button/';
 import withLoading from '../hoc/withLoading';
