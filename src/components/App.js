@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Search from './Search/index';
-import Table from './Table/presenter';
+import Table from './Table/index';
 import './App.css';
 import Button from './Button/';
 import withLoading from '../hoc/withLoading';
@@ -41,11 +41,4 @@ function mapDispatchToProps (dispatch) {
   };
 }
 
-function mapStateToProps (state) {
-  const {result} = {...state};
-  return {
-    result,
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(null, mapDispatchToProps)(App);

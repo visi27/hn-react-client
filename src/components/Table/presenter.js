@@ -3,6 +3,7 @@ import Header from '../Header';
 import Item from '../Item';
 
 const Table = ({result}) => {
+  console.log(result);
   return (
     <div className="table">
       <Header/>
