@@ -12,6 +12,10 @@ export default function(state = initialState, action) {
       return {
         searchTerm: action.searchTerm
       };
+    case actionTypes.SEARCH_RESET:
+      return {
+        searchTerm:  conf.DEFAULT_QUERY
+      };
     default:
       return state;
   }

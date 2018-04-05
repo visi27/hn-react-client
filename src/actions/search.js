@@ -12,3 +12,9 @@ export function submitSearch() {
     type: actionTypes.SEARCH_SUBMIT
   }
 }
+
+export function resetSearch() {
+  return {
+    type: actionTypes.SEARCH_RESET
+  }
+}

@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from '../Button';
+import Button from '../Button/presenter';
 import classNames from 'classnames';
 
 const HeaderItem = ({onSort, sortKey, style, activeSort}) => {

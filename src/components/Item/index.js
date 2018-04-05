@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from '../Button/';
+import Button from '../Button/presenter';
 import * as style from './style';
 
 const Item = ({ item, onDismiss }) => (

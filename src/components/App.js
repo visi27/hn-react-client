@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Search from './Search/index';
 import Table from './Table/index';
 import './App.css';
-import Button from './Button/';
+import Button from './Button/presenter';
 import withLoading from '../hoc/withLoading';
 
 //import { AppConfig as conf } from '../config';

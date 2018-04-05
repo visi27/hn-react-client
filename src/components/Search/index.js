@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { setSearch } from "../../actions/search";
+import { resetSearch, setSearch, submitSearch } from '../../actions/search';
 import Search from "./presenter";
 
 function mapStateToProps(state) {
@@ -11,7 +11,9 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    onSearchChange: (event) => dispatch(setSearch(event.target.value))
+    onSearchChange: (event) => dispatch(setSearch(event.target.value)),
+    onSearchSubmit: () => dispatch(submitSearch()),
+    onReset: () => dispatch(resetSearch())
   };
 }
 
