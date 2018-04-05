@@ -1,9 +1,19 @@
 import * as actionTypes from '../constants/actionTypes';
+import { AppConfig as conf } from '../config';
+
+export default function (state = initialState, action) {
+  switch (action.type) {
+
+    default:
+      return state;
+  }
+}
 
 const initialState = {
   hits: [],
   page: 0,
   nbPages: 0,
+  searchTerm: conf.DEFAULT_QUERY
 };
 
 const staticRsults = [
@@ -212,11 +222,23 @@ export default function (state = initialState, action) {
   switch (action.type) {
     case actionTypes.RESULT_FETCH:
       return fetchResult(state, action);
+    case actionTypes.SEARCH_SET:
+      return {
+        ...state,
+        searchTerm: action.searchTerm,
+      };
+    case actionTypes.SEARCH_RESET:
+      return {
+        ...state,
+        searchTerm: conf.DEFAULT_QUERY,
+      };
     default:
       return state;
   }
 }
 
 function fetchResult (state, action) {
-  return {...state, hits: staticRsults, page:1, nbPages:1};
+  sessionStorage.setItem('TEST', staticRsults);
+  console.log(sessionStorage.getItem('TEST'));
+  return {...state, hits: staticRsults, page: 1, nbPages: 1};
 }
