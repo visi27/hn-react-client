@@ -6,6 +6,5 @@ export const AppConfig = {
   PATH_SEARCH: '/search',
   PARAM_SEARCH: 'query=',
   PARAM_PAGE: 'page=',
-  PARAM_HPP: 'hitsPerPage=',
+  PARAM_HPP: 'hitsPerPage='
 };
-

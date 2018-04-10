@@ -12,12 +12,12 @@ import { connect } from 'react-redux';
 const ButtonWithLoading = withLoading(Button);
 
 class App extends Component {
-  componentDidMount () {
+  componentDidMount() {
     this.props.onLoad();
   }
 
-  render () {
-    const {result} = this.props;
+  render() {
+    const { result } = this.props;
     return (
       <div className="page">
         <span>HELLO</span>
@@ -25,19 +25,17 @@ class App extends Component {
           <Search> Search </Search>
         </div>
 
-        <Table result={result}/>
+        <Table result={result} />
 
-        <ButtonWithLoading>
-          More Articles
-        </ButtonWithLoading>
+        <ButtonWithLoading>More Articles</ButtonWithLoading>
       </div>
     );
   }
 }
 
-function mapDispatchToProps (dispatch) {
+function mapDispatchToProps(dispatch) {
   return {
-    onLoad: () => dispatch(fetchResults()),
+    onLoad: () => dispatch(fetchResults())
   };
 }
 

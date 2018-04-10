@@ -1,8 +1,8 @@
-import * as actionTypes from "../constants/actionTypes";
+import * as actionTypes from '../constants/actionTypes';
 
 const initialState = {
   currentPage: 0,
-  isLoading: false,
+  isLoading: false
 };
 
 export default function(state = initialState, action) {
@@ -17,4 +17,3 @@ export default function(state = initialState, action) {
       return state;
   }
 }
-

@@ -1,10 +1,10 @@
-import { connect } from "react-redux";
-import Table from "./presenter";
+import { connect } from 'react-redux';
+import Table from './presenter';
 
-function mapStateToProps (state) {
-  const {result} = {...state};
+function mapStateToProps(state) {
+  const { result } = { ...state };
   return {
-    result,
+    result
   };
 }
 

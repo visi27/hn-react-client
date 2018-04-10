@@ -6,11 +6,11 @@ import Loading from './index';
 describe('Loading', () => {
   it('renders without crashing', () => {
     const div = document.createElement('div');
-    ReactDOM.render(<Loading/>, div);
+    ReactDOM.render(<Loading />, div);
   });
 
   test('has a valid snapshot', () => {
-    const component = renderer.create(<Loading/>);
+    const component = renderer.create(<Loading />);
     let tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });

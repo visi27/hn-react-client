@@ -1,9 +1,7 @@
 import React from 'react';
-import Loading from '../../components/Loading/'
+import Loading from '../../components/Loading/';
 
-const withLoading = (Component) => ({ isLoading, ...rest }) =>
-  isLoading
-    ? <Loading />
-    : <Component { ...rest } />;
+const withLoading = Component => ({ isLoading, ...rest }) =>
+  isLoading ? <Loading /> : <Component {...rest} />;
 
-export default withLoading
+export default withLoading;

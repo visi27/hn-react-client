@@ -10,7 +10,9 @@ describe('Header', () => {
   });
 
   test('has a valid snapshot', () => {
-    const component = renderer.create(<Header onSort={() => {}} activeSort={'COMMENTS'} />);
+    const component = renderer.create(
+      <Header onSort={() => {}} activeSort={'COMMENTS'} />
+    );
     let tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });

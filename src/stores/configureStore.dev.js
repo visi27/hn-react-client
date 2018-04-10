@@ -1,6 +1,6 @@
-import { createStore, applyMiddleware, compose } from 'redux'
-import { createLogger } from 'redux-logger'
-import rootReducer from '../reducers/index'
+import { createStore, applyMiddleware, compose } from 'redux';
+import { createLogger } from 'redux-logger';
+import rootReducer from '../reducers/index';
 import thunk from 'redux-thunk';
 import DevTools from '../containers/DevTools';
 import { persistState } from 'redux-devtools';
@@ -20,17 +20,18 @@ function getDebugSessionKey() {
   // You can write custom logic here!
   // By default we try to read the key from ?debug_session=<key> in the address bar
   const matches = window.location.href.match(/[?&]debug_session=([^&]+)\b/);
-  return (matches && matches.length > 0)? matches[1] : null;
+  return matches && matches.length > 0 ? matches[1] : null;
 }
 
 export default function configureStore(initialState) {
-
   const store = createStore(rootReducer, initialState, enhancer);
 
   // Hot reload reducers (requires Webpack or Browserify HMR to be enabled)
   if (module.hot) {
     module.hot.accept('../reducers', () =>
-      store.replaceReducer(require('../reducers')/*.default if you use Babel 6+ */)
+      store.replaceReducer(
+        require('../reducers') /*.default if you use Babel 6+ */
+      )
     );
   }
 
