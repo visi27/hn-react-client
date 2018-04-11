@@ -1,18 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Search has a valid snapshot 1`] = `
-<form>
+<form
+  onSubmit={[Function]}
+>
   Search
   <input
     defaultValue="redux"
     onChange={[Function]}
     type="text"
   />
-  <button
-    className="button-inline"
-    type="button"
-  >
+  <Connect(Button)>
     RESET
-  </button>
+  </Connect(Button)>
 </form>
 `;

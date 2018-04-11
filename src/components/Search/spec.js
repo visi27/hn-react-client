@@ -1,14 +1,16 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import renderer from 'react-test-renderer';
-import Search from './';
-import configureStore from '../../stores/configureStore.prod';
+import Search from './presenter';
+import { shallow } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+import { configure } from 'enzyme';
+import toJson from 'enzyme-to-json';
+
+configure({ adapter: new Adapter() });
 
 describe('Search', () => {
-  const store = configureStore();
+  let wrapper;
 
   const props = {
-    store,
     searchTerm: 'redux',
     onSearchChange: () => {},
     onSearchSubmit: () => {},
@@ -16,14 +18,9 @@ describe('Search', () => {
     children: 'Search'
   };
 
-  it('renders without crashing', () => {
-    const div = document.createElement('div');
-    ReactDOM.render(<Search {...props} />, div);
-  });
-
   test('has a valid snapshot', () => {
-    const component = renderer.create(<Search {...props} />);
-    let tree = component.toJSON();
+    const component = shallow(<Search {...props} />);
+    let tree = toJson(component);
     expect(tree).toMatchSnapshot();
   });
 });
