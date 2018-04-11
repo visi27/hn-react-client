@@ -11,7 +11,7 @@ import { connect } from 'react-redux';
 
 const ButtonWithLoading = withLoading(Button);
 
-class App extends Component {
+export class App extends Component {
   componentDidMount() {
     this.props.onLoad();
   }

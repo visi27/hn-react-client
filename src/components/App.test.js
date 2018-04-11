@@ -1,18 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
-import renderer from 'react-test-renderer';
+import { App } from './App';
+import Adapter from 'enzyme-adapter-react-16';
+import { configure, shallow } from 'enzyme';
+import toJson from 'enzyme-to-json';
+
+configure({ adapter: new Adapter() });
 
 describe('App', () => {
-  it('renders without crashing', () => {
-    const div = document.createElement('div');
-    ReactDOM.render(<App />, div);
-    ReactDOM.unmountComponentAtNode(div);
-  });
-
   test('has a valid snapshot', () => {
-    const component = renderer.create(<App />);
-    let tree = component.toJSON();
+    const component = shallow(<App onLoad={()=>{}} />);
+    let tree = toJson(component);
     expect(tree).toMatchSnapshot();
   });
 });
