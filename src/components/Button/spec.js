@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import renderer from 'react-test-renderer';
-import Button from './index';
+import Button from './presenter';
 
 describe('Button', () => {
   it('renders without crashing', () => {
