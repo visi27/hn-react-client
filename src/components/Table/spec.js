@@ -1,23 +1,24 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import renderer from 'react-test-renderer';
-import Enzyme, { mount } from 'enzyme';
-import Table from './index';
-import { configure } from 'enzyme';
+import { mount, configure } from 'enzyme';
+import Table from './presenter';
 import Adapter from 'enzyme-adapter-react-16';
+import { AppConfig as conf } from '../../config';
 
 configure({ adapter: new Adapter() });
 
 describe('Table', () => {
   const props = {
-    list: [
-      { title: '1', author: '1', num_comments: 1, points: 2, objectID: 'y' },
-      { title: '2', author: '2', num_comments: 1, points: 2, objectID: 'z' }
-    ],
-    onDismiss: () => {},
-    onSort: () => {},
-    sortKey: 'NONE',
-    isSortReversedL: false
+    result: {
+      hits: [
+        { title: '1', author: '1', num_comments: 1, points: 2, objectID: 'y' },
+        { title: '2', author: '2', num_comments: 1, points: 2, objectID: 'z' }
+      ],
+      page: 0,
+      nbPages: 0,
+      searchTerm: conf.DEFAULT_QUERY
+    }
   };
 
   it('renders without crashing', () => {
