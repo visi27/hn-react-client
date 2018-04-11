@@ -10,23 +10,13 @@ exports[`App has a valid snapshot 1`] = `
   <div
     className="interactions"
   >
-    <form
-      onSubmit={[Function]}
-    >
-      Search
-      <input
-        onChange={[Function]}
-        type="text"
-        value="redux"
-      />
-      <button
-        className="button-inline"
-        onClick={[Function]}
-        type="button"
-      >
-        RESET
-      </button>
-    </form>
+    <Connect(Search)>
+       Search 
+    </Connect(Search)>
   </div>
+  <Connect(Table) />
+  <Component>
+    More Articles
+  </Component>
 </div>
 `;
