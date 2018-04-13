@@ -1,4 +1,5 @@
 import React from 'react';
+import { PropTypes } from 'prop-types';
 import Button from '../Button/presenter';
 import * as style from './style';
 
@@ -15,5 +16,24 @@ const Item = ({ item, onDismiss }) => (
     </span>
   </div>
 );
+
+Item.propTypes = {
+  item: PropTypes.shape({
+    created_at: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    title_highlighted: PropTypes.string.isRequired,
+    url: PropTypes.string.isRequired,
+    author: PropTypes.string.isRequired,
+    points: PropTypes.number.isRequired,
+    story_text: PropTypes.string.isRequired,
+    num_comments: PropTypes.number.isRequired,
+    objectID: PropTypes.string.isRequired,
+  }).isRequired,
+  onDismiss: PropTypes.func,
+};
+
+Item.defaultProps = {
+  onDismiss: () => {},
+};
 
 export default Item;

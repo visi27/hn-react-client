@@ -1,4 +1,4 @@
-export const AppConfig = {
+export default {
   DEFAULT_QUERY: 'redux',
   DEFAULT_HPP: '20',
 
@@ -6,5 +6,5 @@ export const AppConfig = {
   PATH_SEARCH: '/search',
   PARAM_SEARCH: 'query=',
   PARAM_PAGE: 'page=',
-  PARAM_HPP: 'hitsPerPage='
+  PARAM_HPP: 'hitsPerPage=',
 };

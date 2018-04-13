@@ -1,20 +1,20 @@
-import * as actionTypes from'../constants/actionTypes';
+import * as actionTypes from '../constants/actionTypes';
 
 export function setSearch(searchTerm) {
   return {
     type: actionTypes.SEARCH_SET,
-    searchTerm
-  }
+    searchTerm,
+  };
 }
 
 export function submitSearch() {
   return {
-    type: actionTypes.SEARCH_SUBMIT
-  }
+    type: actionTypes.SEARCH_SUBMIT,
+  };
 }
 
 export function resetSearch() {
   return {
-    type: actionTypes.SEARCH_RESET
-  }
+    type: actionTypes.SEARCH_RESET,
+  };
 }

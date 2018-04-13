@@ -4,7 +4,7 @@ import Button from './presenter';
 
 function mapDispatchToProps(dispatch) {
   return {
-    onClick: () => dispatch(resetSearch())
+    onClick: () => dispatch(resetSearch()),
   };
 }
 

@@ -4,7 +4,7 @@ import Table from './presenter';
 function mapStateToProps(state) {
   const { result } = { ...state };
   return {
-    result
+    result,
   };
 }
 

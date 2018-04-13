@@ -2,10 +2,10 @@ import * as actionTypes from '../constants/actionTypes';
 
 const initialState = {
   currentPage: 0,
-  isLoading: false
+  isLoading: false,
 };
 
-export default function(state = initialState, action) {
+export default function (state = initialState, action) {
   switch (action.type) {
     case actionTypes.SEARCH_SET:
       return state;

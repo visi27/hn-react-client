@@ -5,7 +5,7 @@ import Search from './presenter';
 function mapStateToProps(state) {
   const { searchTerm } = state.search;
   return {
-    searchTerm
+    searchTerm,
   };
 }
 
@@ -13,7 +13,7 @@ function mapDispatchToProps(dispatch) {
   return {
     onSearchChange: event => dispatch(setSearch(event.target.value)),
     onSearchSubmit: () => dispatch(submitSearch()),
-    onReset: () => dispatch(resetSearch())
+    onReset: () => dispatch(resetSearch()),
   };
 }
 

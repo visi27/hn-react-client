@@ -10,5 +10,5 @@ export default combineReducers({
   cache,
   error,
   app,
-  search
+  search,
 });

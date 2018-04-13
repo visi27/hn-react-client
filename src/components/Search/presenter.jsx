@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { PropTypes } from 'prop-types';
 import Button from '../Button/resetButton';
 
 class Search extends Component {
@@ -18,7 +19,7 @@ class Search extends Component {
           type="text"
           defaultValue={searchTerm}
           onChange={onSearchChange}
-          ref={input => {
+          ref={(input) => {
             this.textInput = input;
           }}
         />
@@ -27,5 +28,15 @@ class Search extends Component {
     );
   }
 }
+
+Search.propTypes = {
+  children: PropTypes.element.isRequired,
+  searchTerm: PropTypes.string,
+  onSearchChange: PropTypes.func.isRequired,
+};
+
+Search.defaultProps = {
+  searchTerm: '',
+};
 
 export default Search;

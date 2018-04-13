@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import Search from './Search/index';
 import Table from './Table/index';
 import './App.css';
 import Button from './Button/presenter';
 import withLoading from '../hoc/withLoading';
-
-//import { AppConfig as conf } from '../config';
-import { fetchResults } from '../actions/result';
-import { connect } from 'react-redux';
+import fetchResults from '../actions/result';
 
 const ButtonWithLoading = withLoading(Button);
 
@@ -17,7 +16,6 @@ export class App extends Component {
   }
 
   render() {
-    const { result } = this.props;
     return (
       <div className="page">
         <span>HELLO</span>
@@ -25,7 +23,7 @@ export class App extends Component {
           <Search> Search </Search>
         </div>
 
-        <Table result={result} />
+        <Table />
 
         <ButtonWithLoading>More Articles</ButtonWithLoading>
       </div>
@@ -33,9 +31,13 @@ export class App extends Component {
   }
 }
 
+App.propTypes = {
+  onLoad: PropTypes.func.isRequired,
+};
+
 function mapDispatchToProps(dispatch) {
   return {
-    onLoad: () => dispatch(fetchResults())
+    onLoad: () => dispatch(fetchResults()),
   };
 }
 

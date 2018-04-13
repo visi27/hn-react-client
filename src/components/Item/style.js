@@ -1,9 +1,9 @@
 export const largeColumn = {
-  width: '40%'
+  width: '40%',
 };
 export const midColumn = {
-  width: '30%'
+  width: '30%',
 };
 export const smallColumn = {
-  width: '10%'
+  width: '10%',
 };
