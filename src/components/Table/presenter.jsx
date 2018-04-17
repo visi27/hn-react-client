@@ -7,7 +7,7 @@ import conf from '../../config';
 const Table = ({ result }) => (
   <div className="table">
     <Header />
-    {result.hits.map(item => <Item key={item.objectId} item={item} />)}
+    {result.hits.map(item => <Item key={item.objectID} item={item} />)}
   </div>
 );
 

@@ -88,7 +88,7 @@ const staticRsults = [
     points: 1,
     story_text: null,
     num_comments: 0,
-    objectID: '16582142',
+    objectID: '16592142',
   },
   {
     created_at: '2018-04-03T09:25:14.000Z',
