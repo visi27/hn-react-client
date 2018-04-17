@@ -7,6 +7,7 @@ import './App.css';
 import Button from './Button/presenter';
 import withLoading from '../hoc/withLoading';
 import fetchResults from '../actions/result';
+import Header from './Header/presenter';
 
 const ButtonWithLoading = withLoading(Button);
 
@@ -18,6 +19,7 @@ export class App extends Component {
   render() {
     return (
       <div className="page">
+        <Header />
         <span>HELLO</span>
         <div className="interactions">
           <Search> Search </Search>
