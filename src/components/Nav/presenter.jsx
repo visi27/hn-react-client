@@ -3,6 +3,7 @@ import SearchForm from '../SearchForm/presenter';
 import Link from '../Link/presenter';
 import NavbarToggle from './components/NavbarToggle/presenter';
 import NavbarLink from './components/NavbarLink/presenter';
+import NavbarDropdownLink from './components/NavbarDropdownLink/presenter';
 
 class Nav extends Component {
   constructor(props) {
@@ -20,6 +21,11 @@ class Nav extends Component {
 
   render() {
     const { activeLink } = this.state;
+    const dropdownItems = [
+      { name: 'Action', link: '/dummy' },
+      { name: 'Another action', link: '/dummy' },
+      { name: 'Boom Boom', link: '/dummy' },
+    ];
     return (
       <nav className="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <Link className="navbar-brand" href="/dummy">
@@ -56,29 +62,7 @@ class Nav extends Component {
             >
               Disabled
             </NavbarLink>
-            <li className="nav-item dropdown">
-              <a
-                className="nav-link dropdown-toggle"
-                href="http://example.com"
-                id="dropdown01"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                Dropdown
-              </a>
-              <div className="dropdown-menu" aria-labelledby="dropdown01">
-                <a className="dropdown-item" href="/dummy">
-                  Action
-                </a>
-                <a className="dropdown-item" href="/dummy">
-                  Another action
-                </a>
-                <a className="dropdown-item" href="/dummy">
-                  Something else here
-                </a>
-              </div>
-            </li>
+            <NavbarDropdownLink items={dropdownItems} />
           </ul>
           <SearchForm />
         </div>
