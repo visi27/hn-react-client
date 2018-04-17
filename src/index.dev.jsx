@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import configureStore from './stores/configureStore';
 import ConnectedApp from './components/App';
 import './index.css';
+import DevTools from './containers/DevTools';
 import registerServiceWorker from './registerServiceWorker';
 
 const store = configureStore();
@@ -14,6 +15,7 @@ ReactDOM.render(
   <Provider store={store}>
     <div>
       <ConnectedApp />
+      <DevTools />
     </div>
   </Provider>,
   document.getElementById('root'),
