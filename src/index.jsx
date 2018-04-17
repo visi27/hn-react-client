@@ -8,6 +8,8 @@ import ConnectedApp from './components/App';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 
+import './scss/index.scss';
+
 const store = configureStore();
 
 ReactDOM.render(
