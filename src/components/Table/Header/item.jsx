@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import { PropTypes } from 'prop-types';
 
-import Button from '../Button/presenter';
+import Button from '../../Button/presenter';
 
 const HeaderItem = ({
   onSort, sortKey, style, activeSort,

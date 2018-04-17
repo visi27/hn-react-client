@@ -1,6 +1,6 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import Button from '../Button/presenter';
+import Button from '../../Button/presenter';
 import * as style from './style';
 
 const Item = ({ item, onDismiss }) => (
