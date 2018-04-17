@@ -1,6 +1,8 @@
 import { createLogger } from 'redux-logger';
 import { createStore, applyMiddleware, compose } from 'redux';
+/* eslint-disable import/no-extraneous-dependencies */
 import { persistState } from 'redux-devtools';
+/* eslint-enable import/no-extraneous-dependencies */
 import thunk from 'redux-thunk';
 
 import DevTools from '../containers/DevTools';

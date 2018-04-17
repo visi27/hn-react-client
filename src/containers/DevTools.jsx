@@ -1,11 +1,13 @@
 import React from 'react';
 
 // Exported from redux-devtools
+/* eslint-disable import/no-extraneous-dependencies */
 import { createDevTools } from 'redux-devtools';
 
 // Monitors are separate packages, and you can make a custom one
 import LogMonitor from 'redux-devtools-log-monitor';
 import DockMonitor from 'redux-devtools-dock-monitor';
+/* eslint-enable import/no-extraneous-dependencies */
 
 const dockMonitor = (
   // Monitors are individually adjustable with props.
