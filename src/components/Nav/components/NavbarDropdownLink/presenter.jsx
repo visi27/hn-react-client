@@ -35,7 +35,7 @@ class NavbarDropdownLink extends Component {
         </a>
         <div className={`dropdown-menu ${show}`} aria-labelledby={dropdown.id}>
           {items.map(item => (
-            <a className="dropdown-item" href={item.href}>
+            <a className="dropdown-item" href={item.href} key={item.title}>
               {item.title}
             </a>
           ))}
@@ -51,7 +51,10 @@ NavbarDropdownLink.propTypes = {
     href: PropTypes.string,
     type: PropTypes.string,
     id: PropTypes.string,
-    children: PropTypes.shape({ name: PropTypes.string, href: PropTypes.string }),
+    children: PropTypes.arrayOf(PropTypes.shape({
+      name: PropTypes.string,
+      href: PropTypes.string,
+    })),
   }),
 };
 

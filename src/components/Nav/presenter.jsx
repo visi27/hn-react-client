@@ -49,7 +49,7 @@ class Nav extends Component {
                     </NavbarLink>
                   );
                 case menuTypes.DROPDOWN_MENU_TYPE:
-                  return <NavbarDropdownLink dropdown={element} />;
+                  return <NavbarDropdownLink dropdown={element} key={element.title} />;
                 default:
                   return '';
               }
@@ -63,7 +63,7 @@ class Nav extends Component {
 }
 
 Nav.propTypes = {
-  elements: PropTypes.arrayOf(PropTypes.oneOf([
+  elements: PropTypes.arrayOf(PropTypes.oneOfType([
     PropTypes.shape({
       title: PropTypes.string,
       href: PropTypes.string,

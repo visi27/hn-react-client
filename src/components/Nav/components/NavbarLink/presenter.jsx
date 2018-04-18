@@ -22,7 +22,7 @@ NavbarLink.propTypes = {
   activeKey: PropTypes.string,
   href: PropTypes.string,
   disabled: PropTypes.bool,
-  children: PropTypes.oneOf([PropTypes.string, PropTypes.element]),
+  children: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   onClick: PropTypes.func,
 };
 
