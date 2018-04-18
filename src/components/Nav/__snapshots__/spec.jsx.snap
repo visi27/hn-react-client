@@ -1,0 +1,106 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Nav has valid snapshot 1`] = `
+<nav
+  className="navbar navbar-expand-md navbar-dark fixed-top bg-dark"
+>
+  <a
+    className="navbar-brand"
+    href="/dummy"
+  >
+    Navbar
+  </a>
+  <button
+    aria-controls="mainNavbar"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+    className="navbar-toggler"
+    data-target="#mainNavbar"
+    data-toggle="collapse"
+    type="button"
+  >
+    <span
+      className="navbar-toggler-icon"
+    />
+  </button>
+  <div
+    className="collapse navbar-collapse"
+    id="mainNavbar"
+  >
+    <ul
+      className="navbar-nav mr-auto"
+    >
+      <li
+        className="nav-item"
+      >
+        <a
+          className="nav-link"
+          href="#"
+          onClick={[Function]}
+        >
+          Menu
+        </a>
+      </li>
+      <li
+        className="nav-item"
+      >
+        <a
+          className="nav-link"
+          href="#"
+          onClick={[Function]}
+        >
+          Another Menu
+        </a>
+      </li>
+      <li
+        className="nav-item dropdown "
+      >
+        <a
+          aria-expanded="false"
+          aria-haspopup="true"
+          className="nav-link dropdown-toggle"
+          data-toggle="dropdown"
+          href="#"
+          id="dd01"
+          onClick={[Function]}
+        >
+          Dropdown
+        </a>
+        <div
+          aria-labelledby="dd01"
+          className="dropdown-menu "
+        >
+          <a
+            className="dropdown-item"
+            href="#"
+          >
+            SubMenu
+          </a>
+          <a
+            className="dropdown-item"
+            href="#"
+          >
+            Another SubMenu
+          </a>
+        </div>
+      </li>
+    </ul>
+    <form
+      className="form-inline my-2 my-lg-0"
+    >
+      <input
+        aria-label="Search"
+        className="form-control mr-sm-2"
+        placeholder="Search"
+        type="text"
+      />
+      <button
+        className="btn btn-outline-success my-2 my-sm-0"
+        type="submit"
+      >
+        Search
+      </button>
+    </form>
+  </div>
+</nav>
+`;
