@@ -21,7 +21,7 @@ Item.propTypes = {
   item: PropTypes.shape({
     created_at: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
-    title_highlighted: PropTypes.string.isRequired,
+    title_highlighted: PropTypes.string,
     url: PropTypes.string,
     author: PropTypes.string.isRequired,
     points: PropTypes.number.isRequired,

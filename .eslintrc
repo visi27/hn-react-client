@@ -2,9 +2,11 @@
   "extends": ["eslint-config-airbnb"],
   "env": {
     "browser": true,
-    "node": true
+    "node": true,
+    "jest": true
   },
   "rules": {
-    "function-paren-newline": ["error", "multiline"]
+    "function-paren-newline": ["error", "multiline"],
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }]
   }
 }

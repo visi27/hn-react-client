@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDom from 'react-dom';
 import renderer from 'react-test-renderer';
 import { mount, configure } from 'enzyme';
-import Table from './presenter';
 import Adapter from 'enzyme-adapter-react-16';
-import { AppConfig as conf } from '../../config';
+import Table from './presenter';
+import conf from '../../config';
 
 configure({ adapter: new Adapter() });
 
@@ -12,13 +12,27 @@ describe('Table', () => {
   const props = {
     result: {
       hits: [
-        { title: '1', author: '1', num_comments: 1, points: 2, objectID: 'y' },
-        { title: '2', author: '2', num_comments: 1, points: 2, objectID: 'z' }
+        {
+          title: '1',
+          author: '1',
+          num_comments: 1,
+          points: 2,
+          objectID: 'y',
+          created_at: '2018-04-03T09:35:47.000Z',
+        },
+        {
+          title: '2',
+          author: '2',
+          num_comments: 1,
+          points: 2,
+          objectID: 'z',
+          created_at: '2018-04-03T09:35:47.000Z',
+        },
       ],
       page: 0,
       nbPages: 0,
-      searchTerm: conf.DEFAULT_QUERY
-    }
+      searchTerm: conf.DEFAULT_QUERY,
+    },
   };
 
   it('renders without crashing', () => {
@@ -28,7 +42,7 @@ describe('Table', () => {
 
   test('has valid snapshot', () => {
     const component = renderer.create(<Table {...props} />);
-    let tree = component.toJSON();
+    const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 

@@ -30,13 +30,14 @@ class Search extends Component {
 }
 
 Search.propTypes = {
-  children: PropTypes.element.isRequired,
+  children: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
   searchTerm: PropTypes.string,
   onSearchChange: PropTypes.func.isRequired,
 };
 
 Search.defaultProps = {
   searchTerm: '',
+  children: 'Search',
 };
 
 export default Search;

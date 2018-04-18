@@ -11,7 +11,7 @@ describe('Loading', () => {
 
   test('has a valid snapshot', () => {
     const component = renderer.create(<Loading />);
-    let tree = component.toJSON();
+    const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 });

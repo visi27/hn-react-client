@@ -9,13 +9,14 @@ const Button = ({ className, children, onClick }) => (
 
 Button.propTypes = {
   className: PropTypes.string,
-  children: PropTypes.element.isRequired,
+  children: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
   onClick: PropTypes.func,
 };
 
 Button.defaultProps = {
   className: 'button-inline',
   onClick: () => {},
+  children: 'Click',
 };
 
 export default Button;

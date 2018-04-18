@@ -9,7 +9,8 @@ describe('Item', () => {
     author: '1',
     num_comments: 1,
     points: 2,
-    objectID: 'y'
+    objectID: 'y',
+    created_at: '2018-04-03T09:35:47.000Z',
   };
 
   it('renders without crashing', () => {
@@ -19,7 +20,7 @@ describe('Item', () => {
 
   test('has a valid snapshot', () => {
     const component = renderer.create(<Item item={item} />);
-    let tree = component.toJSON();
+    const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 });
