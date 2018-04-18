@@ -1,5 +1,5 @@
 import React from 'react';
-import Nav from '../Nav/presenter';
+import Nav from '../Nav/';
 
 const Header = () => <Nav />;
 
