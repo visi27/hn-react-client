@@ -10,3 +10,5 @@ export const SEARCH_RESET = 'SEARCH_RESET';
 
 export const CURRENT_PAGE_SET = 'CURRENT_PAGE_SET';
 export const LOADING_TOGGLE = 'LOADING_TOGGLE';
+
+export const MENU_LOAD = 'MENU_LOAD';

@@ -8,7 +8,7 @@ const initialState = {
   searchTerm: conf.DEFAULT_QUERY,
 };
 
-const staticRsults = [
+const staticResults = [
   {
     created_at: '2018-04-03T09:35:47.000Z',
     title: 'Study shows salaries of young women 8% higher than men in their peer group',
@@ -251,10 +251,10 @@ const staticRsults = [
 ];
 
 function fetchResult(state) {
-  sessionStorage.setItem('TEST', staticRsults);
+  sessionStorage.setItem('TEST', staticResults);
   return {
     ...state,
-    hits: staticRsults,
+    hits: staticResults,
     page: 1,
     nbPages: 1,
   };
