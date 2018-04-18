@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import SearchForm from '../SearchForm/presenter';
 import Link from '../Link/presenter';
 import NavbarToggle from './components/NavbarToggle/presenter';
 import NavbarLink from './components/NavbarLink/presenter';
 import NavbarDropdownLink from './components/NavbarDropdownLink/presenter';
+import * as menuTypes from '../../constants/constants';
 
 class Nav extends Component {
   constructor(props) {
@@ -21,11 +23,8 @@ class Nav extends Component {
 
   render() {
     const { activeLink } = this.state;
-    const dropdownItems = [
-      { name: 'Action', link: '/dummy' },
-      { name: 'Another action', link: '/dummy' },
-      { name: 'Boom Boom', link: '/dummy' },
-    ];
+    const { elements } = this.props;
+
     return (
       <nav className="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <Link className="navbar-brand" href="/dummy">
@@ -35,34 +34,26 @@ class Nav extends Component {
 
         <div className="collapse navbar-collapse" id="mainNavbar">
           <ul className="navbar-nav mr-auto">
-            <NavbarLink
-              key="Home"
-              href="#"
-              itemKey="Home"
-              activeKey={activeLink}
-              onClick={this.changeActiveLink}
-            >
-              Home
-            </NavbarLink>
-            <NavbarLink
-              key="Link"
-              href="#"
-              itemKey="Link"
-              activeKey={activeLink}
-              onClick={this.changeActiveLink}
-            >
-              Link
-            </NavbarLink>
-            <NavbarLink
-              key="Disabled"
-              href="#"
-              itemKey="Disabled"
-              activeKey={activeLink}
-              onClick={this.changeActiveLink}
-            >
-              Disabled
-            </NavbarLink>
-            <NavbarDropdownLink items={dropdownItems} />
+            {elements.map((element) => {
+              switch (element.type) {
+                case menuTypes.LINK_MENU_TYPE:
+                  return (
+                    <NavbarLink
+                      key={element.title}
+                      href={element.href}
+                      itemKey={element.title}
+                      activeKey={activeLink}
+                      onClick={this.changeActiveLink}
+                    >
+                      {element.title}
+                    </NavbarLink>
+                  );
+                case menuTypes.DROPDOWN_MENU_TYPE:
+                  return <NavbarDropdownLink dropdown={element} />;
+                default:
+                  return '';
+              }
+            })}
           </ul>
           <SearchForm />
         </div>
@@ -70,5 +61,26 @@ class Nav extends Component {
     );
   }
 }
+
+Nav.propTypes = {
+  elements: PropTypes.arrayOf(PropTypes.oneOf([
+    PropTypes.shape({
+      title: PropTypes.string,
+      href: PropTypes.string,
+      type: PropTypes.string,
+    }),
+    PropTypes.shape({
+      title: PropTypes.string,
+      href: PropTypes.string,
+      type: PropTypes.string,
+      id: PropTypes.string,
+      children: PropTypes.shape({ name: PropTypes.string, href: PropTypes.string }),
+    }),
+  ])),
+};
+
+Nav.defaultProps = {
+  elements: [],
+};
 
 export default Nav;

@@ -18,24 +18,25 @@ class NavbarDropdownLink extends Component {
 
   render() {
     const show = this.state.show ? 'show' : '';
-    const { items } = this.props;
+    const { dropdown } = this.props;
+    const items = dropdown.children;
     return (
       <li className={`nav-item dropdown ${show}`}>
         <a
           className="nav-link dropdown-toggle"
-          href="http://example.com"
-          id="dropdown01"
+          href={dropdown.href}
+          id={dropdown.id}
           data-toggle="dropdown"
           aria-haspopup="true"
           aria-expanded="false"
           onClick={this.toggleDropdown}
         >
-          Dropdown
+          {dropdown.title}
         </a>
-        <div className={`dropdown-menu ${show}`} aria-labelledby="dropdown01">
+        <div className={`dropdown-menu ${show}`} aria-labelledby={dropdown.id}>
           {items.map(item => (
-            <a className="dropdown-item" href={item.link}>
-              {item.name}
+            <a className="dropdown-item" href={item.href}>
+              {item.title}
             </a>
           ))}
         </div>
@@ -45,11 +46,17 @@ class NavbarDropdownLink extends Component {
 }
 
 NavbarDropdownLink.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.shape({ name: PropTypes.string, link: PropTypes.string })),
+  dropdown: PropTypes.shape({
+    title: PropTypes.string,
+    href: PropTypes.string,
+    type: PropTypes.string,
+    id: PropTypes.string,
+    children: PropTypes.shape({ name: PropTypes.string, href: PropTypes.string }),
+  }),
 };
 
 NavbarDropdownLink.defaultProps = {
-  items: [],
+  dropdown: [],
 };
 
 export default NavbarDropdownLink;
