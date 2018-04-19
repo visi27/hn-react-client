@@ -1,7 +1,7 @@
 body {
   color: #222;
   background: #f4f4f4;
-  font: 400 14px CoreSans, Arial,sans-serif;
+  font: 400 14px CoreSans, Arial, sans-serif;
 }
 a {
   color: #222;
@@ -9,7 +9,8 @@ a {
 a:hover {
   text-decoration: underline;
 }
-ul, li {
+ul,
+li {
   list-style: none;
   padding: 0;
   margin: 0;

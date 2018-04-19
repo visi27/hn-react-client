@@ -1,34 +1,20 @@
-import React, { Component } from 'react';
-import Button from '../Button/';
-import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { resetSearch, setSearch, submitSearch } from '../../actions/search';
+import Search from './presenter';
 
-class Search extends Component {
-  componentDidMount() {
-    if(this.textInput) {
-      this.textInput.focus();
-    }
-  }
-
-  render () {
-    const {searchTerm, onSearchChange, onSearchSubmit, onReset, children} = this.props;
-
-    return (
-      <form onSubmit={onSearchSubmit}>
-        {children}
-        <input type="text" value={searchTerm} onChange={onSearchChange}
-               ref={(input) => {this.textInput = input;}}/>
-        <Button onClick={onReset}>RESET</Button>
-      </form>
-    );
-  }
+function mapStateToProps(state) {
+  const { searchTerm } = state.search;
+  return {
+    searchTerm,
+  };
 }
 
-Search.propTypes = {
-  searchTerm: PropTypes.string.isRequired,
-  onSearchChange: PropTypes.func.isRequired,
-  onSearchSubmit: PropTypes.func.isRequired,
-  onReset: PropTypes.func.isRequired,
-  children: PropTypes.string,
-};
+function mapDispatchToProps(dispatch) {
+  return {
+    onSearchChange: event => dispatch(setSearch(event.target.value)),
+    onSearchSubmit: () => dispatch(submitSearch()),
+    onReset: () => dispatch(resetSearch()),
+  };
+}
 
-export default Search;
+export default connect(mapStateToProps, mapDispatchToProps)(Search);

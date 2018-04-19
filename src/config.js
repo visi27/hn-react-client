@@ -1,4 +1,4 @@
-export const AppConfig = {
+export default {
   DEFAULT_QUERY: 'redux',
   DEFAULT_HPP: '20',
 
@@ -8,4 +8,3 @@ export const AppConfig = {
   PARAM_PAGE: 'page=',
   PARAM_HPP: 'hitsPerPage=',
 };
-
