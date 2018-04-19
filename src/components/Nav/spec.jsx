@@ -4,7 +4,7 @@ import renderer from 'react-test-renderer';
 import { mount, configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import Nav from './presenter';
-import * as menuTypes from '../../constants/constants';
+import * as menuTypes from '../../constants/menu';
 
 configure({ adapter: new Adapter() });
 
