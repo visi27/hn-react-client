@@ -9,12 +9,16 @@ function mapStateToProps(state) {
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    onSearchChange: event => dispatch(setSearch(event.target.value)),
-    onSearchSubmit: () => dispatch(submitSearch()),
-    onReset: () => dispatch(resetSearch()),
-  };
-}
+const mapDispatchToProps = dispatch => ({
+  onSearchChange(event) {
+    dispatch(setSearch(event.target.value));
+  },
+  onSearchSubmit() {
+    dispatch(submitSearch());
+  },
+  onReset() {
+    dispatch(resetSearch());
+  },
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Search);

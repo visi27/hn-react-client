@@ -38,13 +38,11 @@ App.propTypes = {
   onLoad: PropTypes.func.isRequired,
 };
 
-function mapDispatchToProps(dispatch) {
-  return {
-    onLoad: () => {
-      dispatch(loadMenu());
-      dispatch(fetchResults());
-    },
-  };
-}
+const mapDispatchToProps = dispatch => ({
+  onLoad() {
+    dispatch(loadMenu());
+    dispatch(fetchResults());
+  },
+});
 
 export default connect(null, mapDispatchToProps)(App);
