@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import SearchForm from '../SearchForm/presenter';
 import Link from '../Link/presenter';
-import NavbarToggle from './components/NavbarToggle/presenter';
-import NavbarLink from './components/NavbarLink/presenter';
-import NavbarDropdownLink from './components/NavbarDropdownLink/presenter';
-import * as menuTypes from '../../constants/constants';
+import NavbarToggle from './NavbarToggle/presenter';
+import NavbarLink from './NavbarLink/presenter';
+import NavbarDropdownLink from './NavbarDropdownLink/presenter';
+import * as menuTypes from '../../constants/menu';
 
 class Nav extends Component {
   constructor(props) {
