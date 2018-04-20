@@ -2,10 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 // import { Router, Route, IndexRoute, browserHistory } from "react-router";
 // import { syncHistoryWithStore } from "react-router-redux";
-import { Provider } from 'react-redux';
 
 import configureStore from './stores/configureStore.prod';
-import ConnectedApp from './components/App';
+import Root from './components/Root';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 
@@ -17,14 +16,7 @@ import './scss/index.scss';
 
 const store = configureStore();
 
-ReactDOM.render(
-  <Provider store={store}>
-    <div>
-      <ConnectedApp />
-    </div>
-  </Provider>,
-  document.getElementById('root'),
-);
+ReactDOM.render(<Root store={store} dev={false} />, document.getElementById('root'));
 
 registerServiceWorker();
 
