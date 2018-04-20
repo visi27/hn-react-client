@@ -10,6 +10,7 @@ export default [
     title: 'Another Menu',
     type: menuTypes.LINK_MENU_TYPE,
     href: '#',
+    disabled: true,
   },
   {
     title: 'Dropdown',
