@@ -377,6 +377,7 @@ module.exports = {
       jQuery: 'jquery',
       'window.jQuery': 'jquery',
       Popper: ['popper.js', 'default'],
+      Util: 'exports-loader?Util!bootstrap/js/dist/util',
     }),
 
     new CompressionPlugin({

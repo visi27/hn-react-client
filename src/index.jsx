@@ -8,10 +8,10 @@ import ConnectedApp from './components/App';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 
-import '../node_modules/jquery/dist/jquery';
+import '../node_modules/jquery/dist/jquery.slim';
 import '../node_modules/popper.js/dist/umd/popper';
 import '../node_modules/bootstrap/js/dist/util';
-import '../node_modules/bootstrap/dist/js/bootstrap';
+import '../node_modules/bootstrap/js/dist/collapse';
 import './scss/index.scss';
 
 const store = configureStore();
