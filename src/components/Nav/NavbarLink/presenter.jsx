@@ -5,12 +5,12 @@ const NavbarLink = ({
   itemKey, activeKey, href, disabled, children, onClick,
 }) => {
   let className = 'nav-item';
-  className += itemKey === activeKey ? ' active' : '';
-  className += disabled ? ' disabled' : '';
+  className += itemKey === activeKey && !disabled ? ' active' : '';
+  const disabledClass = disabled ? ' disabled' : '';
 
   return (
     <li className={className}>
-      <a className="nav-link" href={href} onClick={() => onClick(itemKey)}>
+      <a className={`nav-link ${disabledClass}`} href={href} onClick={() => onClick(itemKey)}>
         {children}
       </a>
     </li>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import v4 from 'node-uuid';
 import SearchForm from '../SearchForm/presenter';
 import Link from '../Link/presenter';
 import NavbarToggle from './NavbarToggle/presenter';
@@ -39,17 +40,18 @@ class Nav extends Component {
                 case menuTypes.LINK_MENU_TYPE:
                   return (
                     <NavbarLink
-                      key={element.title}
+                      key={v4()}
                       href={element.href}
                       itemKey={element.title}
                       activeKey={activeLink}
+                      disabled={element.disabled}
                       onClick={this.changeActiveLink}
                     >
                       {element.title}
                     </NavbarLink>
                   );
                 case menuTypes.DROPDOWN_MENU_TYPE:
-                  return <NavbarDropdownLink dropdown={element} key={element.title} />;
+                  return <NavbarDropdownLink dropdown={element} key={v4()} />;
                 default:
                   return '';
               }

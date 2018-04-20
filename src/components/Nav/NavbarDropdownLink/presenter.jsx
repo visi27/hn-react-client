@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
+import v4 from 'node-uuid';
 
 class NavbarDropdownLink extends Component {
   constructor(props) {
@@ -35,7 +36,7 @@ class NavbarDropdownLink extends Component {
         </a>
         <div className={`dropdown-menu ${show}`} aria-labelledby={dropdown.id}>
           {items.map(item => (
-            <a className="dropdown-item" href={item.href} key={item.title}>
+            <a className="dropdown-item" href={item.href} key={v4()}>
               {item.title}
             </a>
           ))}
