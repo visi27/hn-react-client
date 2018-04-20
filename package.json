@@ -19,7 +19,6 @@
     "isomorphic-fetch": "^2.2.1",
     "jquery": "^3.3.1",
     "lodash": "^4.17.5",
-    "node-uuid": "^1.4.8",
     "object-assign": "4.1.1",
     "popper.js": "^1.14.3",
     "postcss-flexbugs-fixes": "3.2.0",
@@ -35,6 +34,7 @@
     "redux-thunk": "^2.2.0",
     "style-loader": "0.19.0",
     "url-loader": "0.6.2",
+    "uuid": "^3.2.1",
     "whatwg-fetch": "2.0.3"
   },
   "scripts": {

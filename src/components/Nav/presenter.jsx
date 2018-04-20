@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import v4 from 'node-uuid';
+import v4 from 'uuid';
 import SearchForm from '../SearchForm/presenter';
 import Link from '../Link/presenter';
 import NavbarToggle from './NavbarToggle/presenter';
