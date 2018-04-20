@@ -1,17 +1,33 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import PropTypes from 'prop-types';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+
+import Nav from '../components/Nav/';
+
 import ConnectedApp from './App';
 import DevTools from '../containers/DevTools';
 
-const Root = ({ store, dev }) => (
-  <Provider store={store}>
+const Root = ({ store, dev }) => {
+  const appComponent = () => (
     <div>
       <ConnectedApp />
       {dev ? <DevTools /> : ''}
     </div>
-  </Provider>
-);
+  );
+  return (
+    <Provider store={store}>
+      <div>
+        <BrowserRouter>
+          <Switch>
+            <Route exact path="/" component={appComponent} />
+            <Route exact path="/menu" component={Nav} />
+          </Switch>
+        </BrowserRouter>
+      </div>
+    </Provider>
+  );
+};
 
 Root.propTypes = {
   store: PropTypes.shape({}),
@@ -20,7 +36,7 @@ Root.propTypes = {
 
 Root.defaultProps = {
   store: {},
-  dev: false,
+  dev: true,
 };
 
 export default Root;
