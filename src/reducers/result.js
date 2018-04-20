@@ -251,7 +251,6 @@ const staticResults = [
 ];
 
 function fetchResult(state) {
-  sessionStorage.setItem('TEST', staticResults);
   return {
     ...state,
     hits: staticResults,
