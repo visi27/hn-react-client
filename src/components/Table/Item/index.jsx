@@ -1,5 +1,6 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
+import moment from 'moment';
 import Button from '../../Button/presenter';
 
 const Item = ({ item, onDismiss }) => (
@@ -18,6 +19,7 @@ const Item = ({ item, onDismiss }) => (
     </div>
     <div className="list-inline">
       <span className="list-inline-item">Author: {item.author}</span>
+      <span className="list-inline-item">Created: {moment(item.created_at).fromNow()}</span>
       <span className="list-inline-item">Comments: {item.num_comments}</span>
       <span className="list-inline-item">Points: {item.points}</span>
       <span className="list-inline-item">
