@@ -41,6 +41,12 @@ exports[`Item has a valid snapshot 1`] = `
     <span
       className="list-inline-item"
     >
+      Created: 
+      20 days ago
+    </span>
+    <span
+      className="list-inline-item"
+    >
       Comments: 
       1
     </span>

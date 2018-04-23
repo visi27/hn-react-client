@@ -47,6 +47,12 @@ exports[`Table has valid snapshot 1`] = `
       <span
         className="list-inline-item"
       >
+        Created: 
+        20 days ago
+      </span>
+      <span
+        className="list-inline-item"
+      >
         Comments: 
         1
       </span>
@@ -106,6 +112,12 @@ exports[`Table has valid snapshot 1`] = `
       >
         Author: 
         2
+      </span>
+      <span
+        className="list-inline-item"
+      >
+        Created: 
+        20 days ago
       </span>
       <span
         className="list-inline-item"
