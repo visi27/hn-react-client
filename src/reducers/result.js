@@ -15,16 +15,6 @@ export default function (state = initialState, action) {
         ...state,
         ...action.results,
       };
-    case actionTypes.SEARCH_SET:
-      return {
-        ...state,
-        searchTerm: action.searchTerm,
-      };
-    case actionTypes.SEARCH_RESET:
-      return {
-        ...state,
-        searchTerm: conf.DEFAULT_QUERY,
-      };
     default:
       return state;
   }
