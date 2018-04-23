@@ -2,11 +2,9 @@ import { createLogger } from 'redux-logger';
 import { createStore, applyMiddleware, compose } from 'redux';
 /* eslint-disable import/no-extraneous-dependencies */
 import { persistState } from 'redux-devtools';
-import throttle from 'lodash/throttle';
 /* eslint-enable import/no-extraneous-dependencies */
 import thunk from 'redux-thunk';
 
-import * as appLocalStorage from '../modules/localStorage';
 import DevTools from '../containers/DevTools';
 import rootReducer from '../reducers/index';
 
@@ -28,13 +26,8 @@ const enhancer = compose(
   persistState(getDebugSessionKey()),
 );
 
-export default function configureStore() {
-  const store = createStore(rootReducer, appLocalStorage.loadState(), enhancer);
-
-  store.subscribe(throttle(() => {
-    // Persist only user data, not the whole state
-    appLocalStorage.persistState({ search: store.getState().search });
-  }, 2000));
+export default function configureStore(initialState) {
+  const store = createStore(rootReducer, initialState, enhancer);
 
   // Hot reload reducers (requires Webpack or Browserify HMR to be enabled)
   if (module.hot) {
