@@ -4,16 +4,20 @@ import Button from '../../Button/presenter';
 import * as style from './style';
 
 const Item = ({ item, onDismiss }) => (
-  <div key={item.objectID} className="table-row">
+  <div key={item.objectID} className="container-fluid">
     <span style={style.largeColumn}>
       <a href={item.url}>{item.title}</a>
     </span>
-    <span style={style.midColumn}>{item.author}</span>
-    <span style={style.smallColumn}>{item.num_comments}</span>
-    <span style={style.smallColumn}>{item.points}</span>
-    <span style={style.smallColumn}>
-      <Button onClick={() => onDismiss(item.objectID)}>Dismiss</Button>
-    </span>
+    <div className="list-inline">
+      <span className="list-inline-item">Author: {item.author}</span>
+      <span className="list-inline-item">Comments: {item.num_comments}</span>
+      <span className="list-inline-item">Points: {item.points}</span>
+      <span className="list-inline-item">
+        <Button className="btn btn-outline-danger btn-sm" onClick={() => onDismiss(item.objectID)}>
+          Dismiss
+        </Button>
+      </span>
+    </div>
   </div>
 );
 
