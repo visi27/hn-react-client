@@ -6,7 +6,7 @@ import Table from './Table/index';
 import './App.css';
 import Button from './Button/presenter';
 import withLoading from '../hoc/withLoading';
-import fetchResults from '../actions/result';
+import { fetchData } from '../actions/result';
 import loadMenu from '../actions/menu';
 import Header from './Header/presenter';
 
@@ -41,7 +41,7 @@ App.propTypes = {
 const mapDispatchToProps = dispatch => ({
   onLoad() {
     dispatch(loadMenu());
-    dispatch(fetchResults());
+    dispatch(fetchData());
   },
 });
 

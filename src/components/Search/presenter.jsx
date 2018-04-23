@@ -10,10 +10,17 @@ class Search extends Component {
   }
 
   render() {
-    const { children, searchTerm, onSearchChange } = this.props;
+    const {
+      children, searchTerm, onSearchChange, onSearchSubmit,
+    } = this.props;
 
     return (
-      <form onSubmit={e => e.preventDefault()}>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          onSearchSubmit();
+        }}
+      >
         {children}
         <input
           type="text"
@@ -33,6 +40,7 @@ Search.propTypes = {
   children: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
   searchTerm: PropTypes.string,
   onSearchChange: PropTypes.func.isRequired,
+  onSearchSubmit: PropTypes.func.isRequired,
 };
 
 Search.defaultProps = {
