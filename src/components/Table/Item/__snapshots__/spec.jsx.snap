@@ -2,62 +2,66 @@
 
 exports[`Item has a valid snapshot 1`] = `
 <div
-  className="table-row"
+  className="container-fluid item"
 >
-  <span
-    style={
-      Object {
-        "width": "40%",
-      }
-    }
+  <div
+    className="list-inline"
   >
-    <a
-      href={undefined}
+    <span
+      className="list-inline-item"
     >
+      <a
+        className="h5 text-muted"
+        href={undefined}
+      >
+        1
+      </a>
+    </span>
+    <span
+      className="list-inline-item"
+    >
+      <button
+        className="btn btn-outline-danger btn-sm"
+        onClick={[Function]}
+        type="button"
+      >
+        Dismiss
+      </button>
+    </span>
+  </div>
+  <div
+    className="list-inline"
+  >
+    <span
+      className="list-inline-item"
+    >
+      Author: 
       1
-    </a>
-  </span>
-  <span
-    style={
-      Object {
-        "width": "30%",
-      }
-    }
-  >
-    1
-  </span>
-  <span
-    style={
-      Object {
-        "width": "10%",
-      }
-    }
-  >
-    1
-  </span>
-  <span
-    style={
-      Object {
-        "width": "10%",
-      }
-    }
-  >
-    2
-  </span>
-  <span
-    style={
-      Object {
-        "width": "10%",
-      }
-    }
-  >
-    <button
-      className="button-inline"
-      onClick={[Function]}
-      type="button"
+    </span>
+    <span
+      className="list-inline-item"
     >
-      Dismiss
-    </button>
-  </span>
+      Comments: 
+      1
+    </span>
+    <span
+      className="list-inline-item"
+    >
+      Points: 
+      2
+    </span>
+    <span
+      className="list-inline-item"
+    >
+      <a
+        className="text-muted"
+        href={undefined}
+      >
+        (
+        )
+      </a>
+    </span>
+  </div>
+  <hr />
 </div>
 `;

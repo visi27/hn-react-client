@@ -48,7 +48,7 @@ describe('Table', () => {
 
   it('shows two items on the list', () => {
     const element = mount(<Table {...props} />);
-    expect(element.find('.table-row').length).toBe(2);
+    expect(element.find('.item').length).toBe(2);
   });
 
   it('shows one header on the list', () => {
