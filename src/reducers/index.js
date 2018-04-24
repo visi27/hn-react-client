@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import { routerReducer } from 'react-router-redux';
 import result from './result';
 import cache from './cache';
 import error from './error';
@@ -13,4 +14,5 @@ export default combineReducers({
   app,
   search,
   menu,
+  router: routerReducer,
 });

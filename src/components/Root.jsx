@@ -1,28 +1,25 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import PropTypes from 'prop-types';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-
-import Nav from '../components/Nav/';
+import { Route, Switch } from 'react-router-dom';
+import { ConnectedRouter } from 'react-router-redux';
+import createHistory from 'history/createBrowserHistory';
 
 import ConnectedApp from './App';
 import DevTools from '../containers/DevTools';
 
 const Root = ({ store, dev }) => {
-  const appComponent = () => (
-    <div>
-      <ConnectedApp />
-      {dev ? <DevTools /> : ''}
-    </div>
-  );
+  const history = createHistory();
   return (
     <Provider store={store}>
-      <BrowserRouter>
-        <Switch>
-          <Route exact path="/" component={appComponent} />
-          <Route exact path="/menu" component={Nav} />
-        </Switch>
-      </BrowserRouter>
+      <ConnectedRouter history={history}>
+        <div>
+          {dev ? <Route path="/" component={DevTools} /> : ''}
+          <Switch>
+            <Route path="/" component={ConnectedApp} />
+          </Switch>
+        </div>
+      </ConnectedRouter>
     </Provider>
   );
 };
