@@ -2,7 +2,7 @@
 
 exports[`Nav has valid snapshot 1`] = `
 <nav
-  className="navbar navbar-expand-md navbar-dark fixed-top bg-dark"
+  className="navbar navbar-expand-md navbar-dark bg-dark"
 >
   <a
     className="navbar-brand"
@@ -87,10 +87,13 @@ exports[`Nav has valid snapshot 1`] = `
     </ul>
     <form
       className="form-inline my-2 my-lg-0"
+      onSubmit={[Function]}
     >
       <input
         aria-label="Search"
         className="form-control mr-sm-2"
+        defaultValue=""
+        onChange={[Function]}
         placeholder="Search"
         type="text"
       />

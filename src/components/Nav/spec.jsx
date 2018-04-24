@@ -40,6 +40,9 @@ describe('Nav', () => {
         ],
       },
     ],
+    searchTerm: '',
+    onSearchChange: () => {},
+    onSearchSubmit: () => {},
   };
 
   it('renders without crashing', () => {

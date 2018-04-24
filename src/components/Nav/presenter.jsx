@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import v4 from 'uuid';
-import SearchForm from '../SearchForm/presenter';
+import SearchForm from './SearchForm/presenter';
 import Link from '../Link/presenter';
 import NavbarToggle from './NavbarToggle/presenter';
 import NavbarLink from './NavbarLink/presenter';
@@ -24,10 +24,12 @@ class Nav extends Component {
 
   render() {
     const { activeLink } = this.state;
-    const { elements } = this.props;
+    const {
+      elements, searchTerm, onSearchChange, onSearchSubmit,
+    } = this.props;
 
     return (
-      <nav className="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <nav className="navbar navbar-expand-md navbar-dark bg-dark">
         <Link className="navbar-brand" href="/dummy">
           Navbar
         </Link>
@@ -57,7 +59,11 @@ class Nav extends Component {
               }
             })}
           </ul>
-          <SearchForm />
+          <SearchForm
+            searchTerm={searchTerm}
+            onSearchChange={onSearchChange}
+            onSearchSubmit={onSearchSubmit}
+          />
         </div>
       </nav>
     );
@@ -79,10 +85,14 @@ Nav.propTypes = {
       children: PropTypes.shape({ name: PropTypes.string, href: PropTypes.string }),
     }),
   ])),
+  searchTerm: PropTypes.string,
+  onSearchChange: PropTypes.func.isRequired,
+  onSearchSubmit: PropTypes.func.isRequired,
 };
 
 Nav.defaultProps = {
   elements: [],
+  searchTerm: '',
 };
 
 export default Nav;

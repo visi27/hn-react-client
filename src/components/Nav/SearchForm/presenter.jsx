@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
-import Button from '../Button/resetButton';
 
-class Search extends Component {
+class SearchForm extends Component {
   componentDidMount() {
     if (this.textInput) {
       this.textInput.focus();
@@ -10,42 +9,43 @@ class Search extends Component {
   }
 
   render() {
-    const {
-      children, searchTerm, onSearchChange, onSearchSubmit,
-    } = this.props;
+    const { searchTerm, onSearchChange, onSearchSubmit } = this.props;
 
     return (
       <form
+        className="form-inline my-2 my-lg-0"
         onSubmit={(e) => {
           e.preventDefault();
           onSearchSubmit();
         }}
       >
-        {children}
         <input
+          className="form-control mr-sm-2"
           type="text"
+          placeholder="Search"
+          aria-label="Search"
           defaultValue={searchTerm}
           onChange={onSearchChange}
           ref={(input) => {
             this.textInput = input;
           }}
         />
-        <Button>RESET</Button>
+        <button className="btn btn-outline-success my-2 my-sm-0" type="submit">
+          Search
+        </button>
       </form>
     );
   }
 }
 
-Search.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
+SearchForm.propTypes = {
   searchTerm: PropTypes.string,
   onSearchChange: PropTypes.func.isRequired,
   onSearchSubmit: PropTypes.func.isRequired,
 };
 
-Search.defaultProps = {
+SearchForm.defaultProps = {
   searchTerm: '',
-  children: 'Search',
 };
 
-export default Search;
+export default SearchForm;
