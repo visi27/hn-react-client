@@ -1,13 +1,13 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import Header from './Header/presenter';
 import Item from './Item';
 import conf from '../../config';
+import Paginator from '../Paginator/presenter';
 
 const Table = ({ result }) => (
-  <div className="table">
-    <Header />
+  <div className="container-fluid">
     {result.hits.map(item => <Item key={item.objectID} item={item} />)}
+    <Paginator page={result.page} nbPages={result.nbPages} />
   </div>
 );
 

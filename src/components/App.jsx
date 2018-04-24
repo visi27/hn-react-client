@@ -1,16 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Search from './Search/index';
 import Table from './Table/index';
 import './App.css';
-import Button from './Button/presenter';
-import withLoading from '../hoc/withLoading';
 import { fetchData } from '../actions/result';
 import loadMenu from '../actions/menu';
 import Header from './Header/presenter';
-
-const ButtonWithLoading = withLoading(Button);
 
 export class App extends Component {
   componentDidMount() {
@@ -19,16 +14,11 @@ export class App extends Component {
 
   render() {
     return (
-      <div className="page">
+      <div>
         <Header />
-        <span>HELLO</span>
-        <div className="interactions">
-          <Search> Search </Search>
-        </div>
-
-        <Table />
-
-        <ButtonWithLoading>More Articles</ButtonWithLoading>
+        <main role="main" className="mt-3">
+          <Table />
+        </main>
       </div>
     );
   }

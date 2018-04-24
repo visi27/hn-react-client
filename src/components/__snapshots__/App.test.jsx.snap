@@ -1,25 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`App has a valid snapshot 1`] = `
-<div
-  className="page"
->
+<div>
   <Header />
-  <span>
-    HELLO
-  </span>
-  <div
-    className="interactions"
+  <main
+    className="mt-3"
+    role="main"
   >
-    <Connect(Search)>
-       Search 
-    </Connect(Search)>
-  </div>
-  <Connect(Table) />
-  <wrapped
-    isLoading={false}
-  >
-    More Articles
-  </wrapped>
+    <Connect(Table) />
+  </main>
 </div>
 `;

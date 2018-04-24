@@ -17,14 +17,12 @@ const Root = ({ store, dev }) => {
   );
   return (
     <Provider store={store}>
-      <div>
-        <BrowserRouter>
-          <Switch>
-            <Route exact path="/" component={appComponent} />
-            <Route exact path="/menu" component={Nav} />
-          </Switch>
-        </BrowserRouter>
-      </div>
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/" component={appComponent} />
+          <Route exact path="/menu" component={Nav} />
+        </Switch>
+      </BrowserRouter>
     </Provider>
   );
 };

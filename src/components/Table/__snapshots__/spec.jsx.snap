@@ -2,11 +2,8 @@
 
 exports[`Table has valid snapshot 1`] = `
 <div
-  className="table"
+  className="container-fluid"
 >
-  <div
-    className="table-header"
-  />
   <div
     className="container-fluid item"
   >
@@ -48,7 +45,7 @@ exports[`Table has valid snapshot 1`] = `
         className="list-inline-item"
       >
         Created: 
-        20 days ago
+        21 days ago
       </span>
       <span
         className="list-inline-item"
@@ -117,7 +114,7 @@ exports[`Table has valid snapshot 1`] = `
         className="list-inline-item"
       >
         Created: 
-        20 days ago
+        21 days ago
       </span>
       <span
         className="list-inline-item"
@@ -145,5 +142,83 @@ exports[`Table has valid snapshot 1`] = `
     </div>
     <hr />
   </div>
+  <nav
+    aria-label="Page navigation example"
+  >
+    <ul
+      className="pagination"
+    >
+      <li
+        className="page-item disabled"
+      >
+        <a
+          aria-label="Previous"
+          className="page-link"
+          href="/test"
+        >
+          <span
+            aria-hidden="true"
+          >
+            «
+          </span>
+          <span
+            className="sr-only"
+          >
+            Previous
+          </span>
+        </a>
+      </li>
+      <li
+        className="page-item"
+      >
+        <a
+          className="page-link"
+          href="/test"
+        >
+          0
+        </a>
+      </li>
+      <li
+        className="page-item"
+      >
+        <a
+          className="page-link"
+          href="/test"
+        >
+          1
+        </a>
+      </li>
+      <li
+        className="page-item"
+      >
+        <a
+          className="page-link"
+          href="/test"
+        >
+          2
+        </a>
+      </li>
+      <li
+        className="page-item disabled"
+      >
+        <a
+          aria-label="Next"
+          className="page-link"
+          href="/test"
+        >
+          <span
+            aria-hidden="true"
+          >
+            »
+          </span>
+          <span
+            className="sr-only"
+          >
+            Next
+          </span>
+        </a>
+      </li>
+    </ul>
+  </nav>
 </div>
 `;

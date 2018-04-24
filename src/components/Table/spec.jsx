@@ -50,9 +50,4 @@ describe('Table', () => {
     const element = mount(<Table {...props} />);
     expect(element.find('.item').length).toBe(2);
   });
-
-  it('shows one header on the list', () => {
-    const element = mount(<Table {...props} />);
-    expect(element.find('.table-header').length).toBe(1);
-  });
 });
