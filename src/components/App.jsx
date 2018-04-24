@@ -5,7 +5,7 @@ import Table from './Table/index';
 import './App.css';
 import { fetchData } from '../actions/result';
 import loadMenu from '../actions/menu';
-import Header from './Header/presenter';
+import Nav from './Nav/index';
 
 export class App extends Component {
   componentDidMount() {
@@ -15,7 +15,7 @@ export class App extends Component {
   render() {
     return (
       <div>
-        <Header />
+        <Nav />
         <main role="main" className="mt-3">
           <Table />
         </main>
