@@ -8,21 +8,18 @@ import createHistory from 'history/createBrowserHistory';
 import ConnectedApp from './App';
 import DevTools from '../containers/DevTools';
 
-const Root = ({ store, dev }) => {
-  const history = createHistory();
-  return (
-    <Provider store={store}>
-      <ConnectedRouter history={history}>
-        <div>
-          {dev ? <Route path="/" component={DevTools} /> : ''}
-          <Switch>
-            <Route path="/" component={ConnectedApp} />
-          </Switch>
-        </div>
-      </ConnectedRouter>
-    </Provider>
-  );
-};
+const Root = ({ store, dev }) => (
+  <Provider store={store}>
+    <ConnectedRouter history={createHistory()}>
+      <div>
+        {dev ? <Route path="/" component={DevTools} /> : ''}
+        <Switch>
+          <Route path="/" component={ConnectedApp} />
+        </Switch>
+      </div>
+    </ConnectedRouter>
+  </Provider>
+);
 
 Root.propTypes = {
   store: PropTypes.shape({}),

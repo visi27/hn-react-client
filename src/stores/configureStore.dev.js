@@ -10,8 +10,6 @@ import { routerMiddleware } from 'react-router-redux';
 import DevTools from '../containers/DevTools';
 import rootReducer from '../reducers/index';
 
-const logger = createLogger();
-
 function getDebugSessionKey() {
   // You can write custom logic here!
   // By default we try to read the key from ?debug_session=<key> in the address bar
@@ -19,12 +17,9 @@ function getDebugSessionKey() {
   return matches && matches.length > 0 ? matches[1] : null;
 }
 
-const history = createHistory();
-const historyMiddleware = routerMiddleware(history);
-
 const enhancer = compose(
   // Middleware you want to use in development:
-  applyMiddleware(thunk, historyMiddleware, logger),
+  applyMiddleware(thunk, routerMiddleware(createHistory()), createLogger()),
   // Required! Enable Redux DevTools with the monitors you chose
   DevTools.instrument(),
   // Optional. Lets you write ?debug_session=<key> in address bar to persist debug sessions
