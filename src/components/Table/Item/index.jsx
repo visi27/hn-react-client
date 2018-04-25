@@ -13,7 +13,7 @@ const Item = ({ item, onDismiss }) => (
       </span>
       <span className="list-inline-item">
         <Button className="btn btn-outline-danger btn-sm" onClick={() => onDismiss(item.objectID)}>
-          Dismiss
+          Fav
         </Button>
       </span>
     </div>
