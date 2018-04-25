@@ -2,32 +2,26 @@ import * as menuTypes from '../constants/menu';
 
 export default [
   {
-    title: 'Menu',
+    title: 'Home',
     type: menuTypes.LINK_MENU_TYPE,
-    href: '#',
+    href: '/',
   },
   {
-    title: 'Another Menu',
+    title: 'Search',
     type: menuTypes.LINK_MENU_TYPE,
-    href: '#',
+    href: '/search',
+    disabled: false,
+  },
+  {
+    title: 'Popular',
+    type: menuTypes.LINK_MENU_TYPE,
+    href: '/popular',
+    disabled: false,
+  },
+  {
+    title: 'Favorites',
+    type: menuTypes.LINK_MENU_TYPE,
+    href: '/favorites',
     disabled: true,
-  },
-  {
-    title: 'Dropdown',
-    type: menuTypes.DROPDOWN_MENU_TYPE,
-    href: '#',
-    id: 'dd01',
-    children: [
-      {
-        title: 'SubMenu',
-        type: menuTypes.LINK_MENU_TYPE,
-        href: '#',
-      },
-      {
-        title: 'Another SubMenu',
-        type: menuTypes.LINK_MENU_TYPE,
-        href: '#',
-      },
-    ],
   },
 ];
