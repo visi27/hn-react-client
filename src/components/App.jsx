@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Route } from 'react-router-dom';
 import Table from './Table/index';
 import './App.css';
 import { fetchData } from '../actions/result';
@@ -15,7 +16,8 @@ export class App extends Component {
   render() {
     return (
       <div>
-        <Nav />
+        <Route path="/" component={Nav} />
+
         <main role="main" className="mt-3">
           <Table />
         </main>

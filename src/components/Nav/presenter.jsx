@@ -12,18 +12,12 @@ class Nav extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      activeLink: 'Home',
+      currentLocation: this.props.location.pathname,
     };
-
-    this.changeActiveLink = this.changeActiveLink.bind(this);
-  }
-
-  changeActiveLink(newActiveLink) {
-    this.setState({ activeLink: newActiveLink });
   }
 
   render() {
-    const { activeLink } = this.state;
+    const { currentLocation } = this.state;
     const {
       elements, searchTerm, onSearchChange, onSearchSubmit,
     } = this.props;
@@ -45,9 +39,8 @@ class Nav extends Component {
                       key={v4()}
                       href={element.href}
                       itemKey={element.title}
-                      activeKey={activeLink}
+                      currentLocation={currentLocation}
                       disabled={element.disabled}
-                      onClick={this.changeActiveLink}
                     >
                       {element.title}
                     </NavbarLink>
@@ -85,12 +78,22 @@ Nav.propTypes = {
       children: PropTypes.shape({ name: PropTypes.string, href: PropTypes.string }),
     }),
   ])),
+  location: PropTypes.shape({
+    hash: PropTypes.string,
+    pathname: PropTypes.string,
+    search: PropTypes.string,
+  }),
   searchTerm: PropTypes.string,
   onSearchChange: PropTypes.func.isRequired,
   onSearchSubmit: PropTypes.func.isRequired,
 };
 
 Nav.defaultProps = {
+  location: {
+    hash: '',
+    pathname: '/',
+    search: '',
+  },
   elements: [],
   searchTerm: '',
 };

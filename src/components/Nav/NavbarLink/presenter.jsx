@@ -2,10 +2,10 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 
 const NavbarLink = ({
-  itemKey, activeKey, href, disabled, children, onClick,
+  itemKey, currentLocation, href, disabled, children, onClick,
 }) => {
   let className = 'nav-item';
-  className += itemKey === activeKey && !disabled ? ' active' : '';
+  className += href === currentLocation && !disabled ? ' active' : '';
   const disabledClass = disabled ? ' disabled' : '';
 
   return (
@@ -19,7 +19,7 @@ const NavbarLink = ({
 
 NavbarLink.propTypes = {
   itemKey: PropTypes.string,
-  activeKey: PropTypes.string,
+  currentLocation: PropTypes.string,
   href: PropTypes.string,
   disabled: PropTypes.bool,
   children: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
@@ -28,7 +28,7 @@ NavbarLink.propTypes = {
 
 NavbarLink.defaultProps = {
   itemKey: '',
-  activeKey: '',
+  currentLocation: '/',
   href: '#',
   disabled: false,
   children: 'Menu',
