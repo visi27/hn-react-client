@@ -1,9 +1,9 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import moment from 'moment';
-import Button from '../../Button/presenter';
+import { IconButton } from 'react-toolbox/lib/button';
 
-const Item = ({ item, onDismiss }) => (
+const Item = ({ item, onFavorite }) => (
   <div key={item.objectID} className="container-fluid item">
     <div className="list-inline">
       <span className="list-inline-item">
@@ -12,9 +12,7 @@ const Item = ({ item, onDismiss }) => (
         </a>
       </span>
       <span className="list-inline-item">
-        <Button className="btn btn-outline-danger btn-sm" onClick={() => onDismiss(item.objectID)}>
-          Fav
-        </Button>
+        <IconButton icon="favorite" accent onClick={() => onFavorite(item.objectID)} />
       </span>
     </div>
     <div className="list-inline">
@@ -44,11 +42,11 @@ Item.propTypes = {
     num_comments: PropTypes.number.isRequired,
     objectID: PropTypes.string.isRequired,
   }).isRequired,
-  onDismiss: PropTypes.func,
+  onFavorite: PropTypes.func,
 };
 
 Item.defaultProps = {
-  onDismiss: () => {},
+  onFavorite: () => {},
 };
 
 export default Item;
