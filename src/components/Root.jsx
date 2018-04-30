@@ -8,13 +8,33 @@ import createHistory from 'history/createBrowserHistory';
 import ConnectedApp from './App';
 import DevTools from '../containers/DevTools';
 
+import Auth from '../services/Auth/Auth';
+import Callback from './Callback';
+
+const auth = new Auth();
+
+const handleAuthentication = (nextState) => {
+  console.log('TEST');
+  console.log(nextState.location.hash);
+  if (/access_token|id_token|error/.test(nextState.location.hash)) {
+    auth.handleAuthentication();
+  }
+};
+
 const Root = ({ store, dev }) => (
   <Provider store={store}>
     <ConnectedRouter history={createHistory()}>
       <div>
         {dev ? <Route path="/" component={DevTools} /> : ''}
         <Switch>
-          <Route path="/" component={ConnectedApp} />
+          <Route exact path="/" render={props => <ConnectedApp auth={auth} {...props} />} />
+          <Route
+            path="/callback"
+            render={(props) => {
+              handleAuthentication(props);
+              return <Callback {...props} />;
+            }}
+          />
         </Switch>
       </div>
     </ConnectedRouter>
