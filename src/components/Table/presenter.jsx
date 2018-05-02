@@ -2,12 +2,12 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import Item from './Item';
 import conf from '../../config';
-import Paginator from '../Paginator/presenter';
+import Paginator from '../Paginator/index';
 
 const Table = ({ result }) => (
   <div className="container-fluid">
     {result.hits.map(item => <Item key={item.objectID} item={item} />)}
-    <Paginator page={result.page} nbPages={result.nbPages} />
+    <Paginator />
   </div>
 );
 
