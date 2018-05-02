@@ -58,7 +58,7 @@ App.propTypes = {
 const mapDispatchToProps = dispatch => ({
   onLoad() {
     dispatch(loadMenu());
-    dispatch(fetchData());
+    dispatch(fetchData({}));
   },
 });
 
