@@ -14,8 +14,6 @@ import Callback from './Callback';
 const auth = new Auth();
 
 const handleAuthentication = (nextState) => {
-  console.log('TEST');
-  console.log(nextState.location.hash);
   if (/access_token|id_token|error/.test(nextState.location.hash)) {
     auth.handleAuthentication();
   }
