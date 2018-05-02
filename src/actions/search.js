@@ -7,7 +7,7 @@ export const setSearch = searchTerm => ({
 });
 
 export const submitSearch = () => (dispatch, getState) => {
-  dispatch(fetchData(getState().search.searchTerm, 1));
+  dispatch(fetchData({ query: getState().search.searchTerm, page: 1 }));
 };
 
 export const resetSearch = () => ({
