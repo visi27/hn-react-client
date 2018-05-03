@@ -6,8 +6,32 @@ export const receiveResults = results => ({
   results,
 });
 
-export const fetchData = ({ query = conf.DEFAULT_QUERY, page = 1 }) => (dispatch) => {
-  const url = `https://hn.algolia.com/api/v1/search?query=${query}&tags=story&page=${page}`;
+export const fetchData = ({ query = conf.DEFAULT_QUERY, page = 1 }) => (dispatch, getState) => {
+  const path = getState().router.location.pathname;
+
+  let baseUrl;
+  switch (path) {
+    case '/':
+      baseUrl = `${conf.PATH_BASE}search?tags=front_page`;
+      break;
+    case '/home':
+      baseUrl = `${conf.PATH_BASE}search?tags=front_page`;
+      break;
+    case '/latest':
+      baseUrl = `${conf.PATH_BASE}search_by_date?tags=story`;
+      break;
+    case '/ask':
+      baseUrl = `${conf.PATH_BASE}search?tags=ask_hn`;
+      break;
+    case '/show':
+      baseUrl = `${conf.PATH_BASE}search?tags=show_hn`;
+      break;
+    default:
+      baseUrl = `${conf.PATH_BASE}search?tags=search`;
+      break;
+  }
+
+  const url = `${baseUrl}&query=${query}&page=${page}`;
   // dispatch(itemsIsLoading(true));
   fetch(url)
     .then((response) => {
