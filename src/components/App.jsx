@@ -16,8 +16,16 @@ export class App extends Component {
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
   }
+
   componentDidMount() {
     this.props.onLoad();
+  }
+  shouldComponentUpdate(nextProps) {
+    return this.props.location.pathname !== nextProps.location.pathname;
+  }
+
+  componentDidUpdate() {
+    this.props.onLocationChange();
   }
 
   login() {
@@ -52,12 +60,19 @@ export class App extends Component {
 
 App.propTypes = {
   onLoad: PropTypes.func.isRequired,
+  onLocationChange: PropTypes.func.isRequired,
   auth: PropTypes.instanceOf(Auth).isRequired,
+  location: PropTypes.shape({
+    pathname: PropTypes.string,
+  }).isRequired,
 };
 
 const mapDispatchToProps = dispatch => ({
   onLoad() {
     dispatch(loadMenu());
+    dispatch(fetchData({}));
+  },
+  onLocationChange() {
     dispatch(fetchData({}));
   },
 });
