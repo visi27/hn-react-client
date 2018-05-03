@@ -23,7 +23,7 @@ const Root = ({ store, dev, auth }) => (
       <div>
         {dev ? <Route path="/" component={DevTools} /> : ''}
         <Switch>
-          <Route exact path="/" render={props => <ConnectedApp auth={auth} {...props} />} />
+          <Route path="/" render={props => <ConnectedApp auth={auth} {...props} />} />
           <Route
             path="/callback"
             render={(props) => {
