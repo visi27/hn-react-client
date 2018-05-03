@@ -7,21 +7,21 @@ export default [
     href: '/',
   },
   {
-    title: 'Search',
+    title: 'Latest',
     type: menuTypes.LINK_MENU_TYPE,
-    href: '/search',
+    href: '/latest',
     disabled: false,
   },
   {
-    title: 'Popular',
+    title: 'Ask HN',
     type: menuTypes.LINK_MENU_TYPE,
-    href: '/popular',
+    href: '/ask',
     disabled: false,
   },
   {
-    title: 'Favorites',
+    title: 'Show HN',
     type: menuTypes.LINK_MENU_TYPE,
-    href: '/favorites',
-    disabled: true,
+    href: '/show',
+    disabled: false,
   },
 ];

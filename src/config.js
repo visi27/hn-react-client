@@ -1,8 +1,8 @@
 export default {
-  DEFAULT_QUERY: 'redux',
+  DEFAULT_QUERY: '',
   DEFAULT_HPP: '20',
 
-  PATH_BASE: 'http://symfony.local:8080/api/v1.0/hn',
+  PATH_BASE: 'https://hn.algolia.com/api/v1/',
   PATH_SEARCH: '/search',
   PARAM_SEARCH: 'query=',
   PARAM_PAGE: 'page=',

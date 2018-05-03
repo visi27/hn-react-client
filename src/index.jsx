@@ -1,7 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import { Router, Route, IndexRoute, browserHistory } from "react-router";
-// import { syncHistoryWithStore } from "react-router-redux";
 
 import configureStore from './stores/configureStore.prod';
 import Root from './components/Root';
