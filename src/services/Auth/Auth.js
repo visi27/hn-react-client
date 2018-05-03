@@ -1,12 +1,11 @@
 import auth0 from 'auth0-js';
-import createHistory from 'history/createBrowserHistory';
-
-const history = createHistory();
+import { push } from 'react-router-redux';
 
 /* eslint class-methods-use-this: ["error", { "exceptMethods":
 ["setSession", "logout", "isAuthenticated"] }] */
 class Auth {
-  constructor() {
+  constructor(store) {
+    this.store = store;
     this.auth0 = new auth0.WebAuth({
       domain: 'evis.auth0.com',
       clientID: 'cGTBW64NQSNoqtzxy7NppBdDTaF1YnrH',
@@ -29,9 +28,10 @@ class Auth {
     this.auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
         this.setSession(authResult);
-        history.replace('/');
+        this.store.dispatch(push('/'));
       } else if (err) {
-        history.replace('/');
+        this.store.dispatch(push('/'));
+
         console.log(err);
       }
     });
@@ -45,7 +45,7 @@ class Auth {
     localStorage.setItem('id_token', authResult.idToken);
     localStorage.setItem('expires_at', expiresAt);
     // navigate to the home route
-    history.replace('/');
+    this.store.dispatch(push('/'));
   }
 
   logout() {
@@ -54,7 +54,7 @@ class Auth {
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
     // navigate to the home route
-    history.replace('/');
+    this.store.dispatch(push('/'));
   }
 
   isAuthenticated() {

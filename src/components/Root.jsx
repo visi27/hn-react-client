@@ -8,18 +8,16 @@ import createHistory from 'history/createBrowserHistory';
 import ConnectedApp from './App';
 import DevTools from '../containers/DevTools';
 
-import Auth from '../services/Auth/Auth';
 import Callback from './Callback';
+import Auth from '../services/Auth/Auth';
 
-const auth = new Auth();
-
-const handleAuthentication = (nextState) => {
+const handleAuthentication = (nextState, auth) => {
   if (/access_token|id_token|error/.test(nextState.location.hash)) {
     auth.handleAuthentication();
   }
 };
 
-const Root = ({ store, dev }) => (
+const Root = ({ store, dev, auth }) => (
   <Provider store={store}>
     <ConnectedRouter history={createHistory()}>
       <div>
@@ -29,7 +27,7 @@ const Root = ({ store, dev }) => (
           <Route
             path="/callback"
             render={(props) => {
-              handleAuthentication(props);
+              handleAuthentication(props, auth);
               return <Callback {...props} />;
             }}
           />
@@ -42,6 +40,7 @@ const Root = ({ store, dev }) => (
 Root.propTypes = {
   store: PropTypes.shape({}),
   dev: PropTypes.bool,
+  auth: PropTypes.instanceOf(Auth).isRequired,
 };
 
 Root.defaultProps = {
