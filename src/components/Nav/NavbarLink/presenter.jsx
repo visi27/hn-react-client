@@ -2,7 +2,7 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 
 const NavbarLink = ({
-  itemKey, currentLocation, href, disabled, children, onClick,
+  currentLocation, href, disabled, children, history,
 }) => {
   let className = 'nav-item';
   className += href === currentLocation && !disabled ? ' active' : '';
@@ -10,7 +10,14 @@ const NavbarLink = ({
 
   return (
     <li className={className}>
-      <a className={`nav-link ${disabledClass}`} href={href} onClick={() => onClick(itemKey)}>
+      <a
+        className={`nav-link ${disabledClass}`}
+        href={href}
+        onClick={(e) => {
+          e.preventDefault();
+          history.push(href);
+        }}
+      >
         {children}
       </a>
     </li>
@@ -18,21 +25,18 @@ const NavbarLink = ({
 };
 
 NavbarLink.propTypes = {
-  itemKey: PropTypes.string,
   currentLocation: PropTypes.string,
   href: PropTypes.string,
   disabled: PropTypes.bool,
   children: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-  onClick: PropTypes.func,
+  history: PropTypes.shape({}).isRequired,
 };
 
 NavbarLink.defaultProps = {
-  itemKey: '',
   currentLocation: '/',
   href: '#',
   disabled: false,
   children: 'Menu',
-  onClick: () => {},
 };
 
 export default NavbarLink;

@@ -19,7 +19,7 @@ class Nav extends Component {
   render() {
     const { currentLocation } = this.state;
     const {
-      elements, searchTerm, onSearchChange, onSearchSubmit,
+      elements, searchTerm, onSearchChange, onSearchSubmit, history,
     } = this.props;
 
     return (
@@ -38,9 +38,9 @@ class Nav extends Component {
                     <NavbarLink
                       key={v4()}
                       href={element.href}
-                      itemKey={element.title}
                       currentLocation={currentLocation}
                       disabled={element.disabled}
+                      history={history}
                     >
                       {element.title}
                     </NavbarLink>
@@ -78,6 +78,7 @@ Nav.propTypes = {
       children: PropTypes.shape({ name: PropTypes.string, href: PropTypes.string }),
     }),
   ])),
+  history: PropTypes.shape({}).isRequired,
   location: PropTypes.shape({
     hash: PropTypes.string,
     pathname: PropTypes.string,
