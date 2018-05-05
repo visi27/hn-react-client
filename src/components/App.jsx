@@ -33,7 +33,7 @@ export class App extends Component {
   }
 
   logout() {
-    this.props.auth.logout();
+    this.props.history.push('/logout');
   }
 
   render() {
@@ -62,6 +62,9 @@ App.propTypes = {
   onLoad: PropTypes.func.isRequired,
   onLocationChange: PropTypes.func.isRequired,
   auth: PropTypes.instanceOf(Auth).isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }).isRequired,
   location: PropTypes.shape({
     pathname: PropTypes.string,
   }).isRequired,

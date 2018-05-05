@@ -7,7 +7,7 @@ import { ConnectedRouter } from 'react-router-redux';
 import DevTools from '../containers/DevTools';
 import Auth from '../services/Auth/Auth';
 import ConnectedApp from './App';
-import Callback from './Callback';
+import Callback from './Auth/Callback';
 
 const history = createHistory();
 const auth = new Auth(history);
@@ -29,6 +29,14 @@ const Root = ({ store, dev }) => (
             path="/callback"
             render={(props) => {
               handleAuthentication(props, auth);
+              return <Callback {...props} />;
+            }}
+          />
+          <Route
+            exact
+            path="/logout"
+            render={(props) => {
+              auth.logout();
               return <Callback {...props} />;
             }}
           />
