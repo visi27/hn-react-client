@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
-import Table from './Table/index';
-import './App.css';
-import { fetchData } from '../actions/result';
 import loadMenu from '../actions/menu';
-import Nav from './Nav/index';
+import { fetchData } from '../actions/result';
 import Auth from '../services/Auth/Auth';
+import './App.css';
 import Button from './Button/presenter';
+import Nav from './Nav/index';
+import Table from './Table/index';
 
 export class App extends Component {
   constructor(props) {

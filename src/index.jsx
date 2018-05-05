@@ -1,23 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-import configureStore from './stores/configureStore.prod';
+import '../node_modules/bootstrap/js/dist/collapse';
+import '../node_modules/bootstrap/js/dist/util';
+import '../node_modules/jquery/dist/jquery.slim';
+import '../node_modules/popper.js/dist/umd/popper';
 import Root from './components/Root';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
-
-import Auth from './services/Auth/Auth';
-
-import '../node_modules/jquery/dist/jquery.slim';
-import '../node_modules/popper.js/dist/umd/popper';
-import '../node_modules/bootstrap/js/dist/util';
-import '../node_modules/bootstrap/js/dist/collapse';
 import './scss/index.scss';
+import configureStore from './stores/configureStore.prod';
 
 const store = configureStore();
-const auth = new Auth(store);
 
-ReactDOM.render(<Root store={store} auth={auth} dev={false} />, document.getElementById('root'));
+ReactDOM.render(<Root store={store} dev={false} />, document.getElementById('root'));
 
 registerServiceWorker();
 
