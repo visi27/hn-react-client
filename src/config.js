@@ -1,3 +1,4 @@
+export const localStorageKey = 'hn.favorites';
 export default {
   DEFAULT_QUERY: '',
   DEFAULT_HPP: '20',
