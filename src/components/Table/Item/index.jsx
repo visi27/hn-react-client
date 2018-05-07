@@ -1,34 +1,58 @@
-import React from 'react';
-import { PropTypes } from 'prop-types';
 import moment from 'moment';
+import { PropTypes } from 'prop-types';
+import React, { Component } from 'react';
 import { IconButton } from 'react-toolbox/lib/button';
 
-const Item = ({ item, onFavorite }) => (
-  <div key={item.objectID} className="container-fluid item">
-    <div className="list-inline">
-      <span className="list-inline-item">
-        <a className="h5 text-muted" href={item.url}>
-          {item.title}
-        </a>
-      </span>
-      <span className="list-inline-item">
-        <IconButton icon="favorite" accent onClick={() => onFavorite(item.objectID)} />
-      </span>
-    </div>
-    <div className="list-inline">
-      <span className="list-inline-item">Author: {item.author}</span>
-      <span className="list-inline-item">Created: {moment(item.created_at).fromNow()}</span>
-      <span className="list-inline-item">Comments: {item.num_comments}</span>
-      <span className="list-inline-item">Points: {item.points}</span>
-      <span className="list-inline-item">
-        <a className="text-muted" href={item.url}>
-          ({item.url})
-        </a>
-      </span>
-    </div>
-    <hr />
-  </div>
-);
+class Item extends Component {
+  render() {
+    const {
+      item, isFavorite, onAddFavorite, onRemoveFavorite,
+    } = this.props;
+    return (
+      <div key={item.objectID} className="container-fluid item">
+        <div className="list-inline">
+          <span className="list-inline-item">
+            <a className="h5 text-muted" href={item.url}>
+              {item.title}
+            </a>
+          </span>
+          <span className="list-inline-item">
+            {isFavorite(item.objectID) ? (
+              <IconButton
+                icon="favorite"
+                accent
+                onClick={() => {
+                  onRemoveFavorite(item.objectID);
+                  this.forceUpdate();
+                }}
+              />
+            ) : (
+              <IconButton
+                icon="favorite"
+                onClick={() => {
+                  onAddFavorite(item.objectID);
+                  this.forceUpdate();
+                }}
+              />
+            )}
+          </span>
+        </div>
+        <div className="list-inline">
+          <span className="list-inline-item">Author: {item.author}</span>
+          <span className="list-inline-item">Created: {moment(item.created_at).fromNow()}</span>
+          <span className="list-inline-item">Comments: {item.num_comments}</span>
+          <span className="list-inline-item">Points: {item.points}</span>
+          <span className="list-inline-item">
+            <a className="text-muted" href={item.url}>
+              ({item.url})
+            </a>
+          </span>
+        </div>
+        <hr />
+      </div>
+    );
+  }
+}
 
 Item.propTypes = {
   item: PropTypes.shape({
@@ -42,11 +66,15 @@ Item.propTypes = {
     num_comments: PropTypes.number.isRequired,
     objectID: PropTypes.string.isRequired,
   }).isRequired,
-  onFavorite: PropTypes.func,
+  isFavorite: PropTypes.func,
+  onAddFavorite: PropTypes.func,
+  onRemoveFavorite: PropTypes.func,
 };
 
 Item.defaultProps = {
-  onFavorite: () => {},
+  isFavorite: () => {},
+  onAddFavorite: () => {},
+  onRemoveFavorite: () => {},
 };
 
 export default Item;
