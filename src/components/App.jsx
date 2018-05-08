@@ -41,12 +41,12 @@ export class App extends Component {
       <div>
         <Route path="/" component={Nav} />
         {!this.props.auth.isAuthenticated() && (
-          <Button bsStyle="primary" className="btn-margin" onClick={this.login}>
+          <Button bsStyle="primary" className="btn-margin invisible" onClick={this.login}>
             Log In
           </Button>
         )}
         {this.props.auth.isAuthenticated() && (
-          <Button bsStyle="primary" className="btn-margin" onClick={this.logout}>
+          <Button bsStyle="primary" className="btn-margin invisible" onClick={this.logout}>
             Log Out
           </Button>
         )}
