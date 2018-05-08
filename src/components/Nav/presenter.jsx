@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import v4 from 'uuid';
-import SearchForm from './SearchForm/presenter';
-import Link from '../Link/presenter';
-import NavbarToggle from './NavbarToggle/presenter';
-import NavbarLink from './NavbarLink/presenter';
-import NavbarDropdownLink from './NavbarDropdownLink/presenter';
 import * as menuTypes from '../../constants/menu';
+import Link from '../Link/presenter';
+import NavbarDropdownLink from './NavbarDropdownLink/presenter';
+import NavbarLink from './NavbarLink/presenter';
+import NavbarToggle from './NavbarToggle/presenter';
+import SearchForm from './SearchForm/presenter';
 
 class Nav extends Component {
   constructor(props) {
@@ -25,7 +25,7 @@ class Nav extends Component {
     return (
       <nav className="navbar navbar-expand-md navbar-dark bg-dark">
         <Link className="navbar-brand" href="/dummy">
-          Navbar
+          Hacker News
         </Link>
         <NavbarToggle target="mainNavbar" />
 
