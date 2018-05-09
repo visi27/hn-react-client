@@ -1,7 +1,7 @@
 import userConstants from '../_constants/user.constants';
 import history from '../_helpers/history';
-import { userService } from '../_services';
-import { alertActions } from './';
+import userService from '../_services/User';
+import alertActions from './alert.actions';
 
 function login(username, password) {
   function request(user) {

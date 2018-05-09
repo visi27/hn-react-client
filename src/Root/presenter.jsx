@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
 import { ConnectedRouter } from 'react-router-redux';
 import ConnectedApp from '../App';
+import Login from '../Login';
 import DevTools from '../_containers/DevTools';
 import history from '../_helpers/history';
 
@@ -13,6 +14,7 @@ const Root = ({ store, dev }) => (
       <div>
         {dev ? <Route path="/" component={DevTools} /> : ''}
         <Switch>
+          <Route path="/login" component={Login} />
           <Route path="/" render={props => <ConnectedApp {...props} />} />
         </Switch>
       </div>

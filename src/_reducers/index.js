@@ -6,6 +6,7 @@ import error from './error';
 import app from './app';
 import search from './search';
 import menu from './menu';
+import auth from './auth';
 
 export default combineReducers({
   result,
@@ -14,5 +15,6 @@ export default combineReducers({
   app,
   search,
   menu,
+  auth,
   router: routerReducer,
 });
