@@ -1,20 +1,19 @@
+import { configure, mount } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
 import React from 'react';
 import ReactDom from 'react-dom';
 import renderer from 'react-test-renderer';
-import { mount, configure } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
 import NavbarLink from './presenter';
 
 configure({ adapter: new Adapter() });
 
 describe('Nav', () => {
   const props = {
-    itemKey: 'testLink',
-    activeKey: 'testLink2',
-    href: '#',
+    currentLocation: '/',
+    href: '/',
     disabled: false,
     children: 'testLink',
-    onClick: () => {},
+    history: {},
   };
 
   const propsActiveLink = { ...props, activeKey: 'testLink' };

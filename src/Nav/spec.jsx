@@ -41,6 +41,7 @@ describe('Nav', () => {
       },
     ],
     searchTerm: '',
+    history: {},
     onSearchChange: () => {},
     onSearchSubmit: () => {},
   };

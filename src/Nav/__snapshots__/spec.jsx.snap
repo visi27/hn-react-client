@@ -8,7 +8,7 @@ exports[`Nav has valid snapshot 1`] = `
     className="navbar-brand"
     href="/dummy"
   >
-    Navbar
+    Hacker News
   </a>
   <button
     aria-controls="mainNavbar"

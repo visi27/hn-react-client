@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import { Route } from 'react-router-dom';
 import Nav from '../Nav/index';
 import ResultsView from '../ResultsView/index';
 import './style.css';
@@ -19,7 +20,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Nav />
+        <Route path="/" component={Nav} />
         <main role="main" className="mt-3">
           <ResultsView />
         </main>

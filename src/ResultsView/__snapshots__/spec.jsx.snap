@@ -1,224 +1,41 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Table has valid snapshot 1`] = `
+exports[`ResultsView has valid snapshot 1`] = `
 <div
   className="container-fluid"
 >
-  <div
-    className="container-fluid item"
-  >
-    <div
-      className="list-inline"
-    >
-      <span
-        className="list-inline-item"
-      >
-        <a
-          className="h5 text-muted"
-          href={undefined}
-        >
-          1
-        </a>
-      </span>
-      <span
-        className="list-inline-item"
-      >
-        <button
-          className="btn btn-outline-danger btn-sm"
-          onClick={[Function]}
-          type="button"
-        >
-          Dismiss
-        </button>
-      </span>
-    </div>
-    <div
-      className="list-inline"
-    >
-      <span
-        className="list-inline-item"
-      >
-        Author: 
-        1
-      </span>
-      <span
-        className="list-inline-item"
-      >
-        Created: 
-        21 days ago
-      </span>
-      <span
-        className="list-inline-item"
-      >
-        Comments: 
-        1
-      </span>
-      <span
-        className="list-inline-item"
-      >
-        Points: 
-        2
-      </span>
-      <span
-        className="list-inline-item"
-      >
-        <a
-          className="text-muted"
-          href={undefined}
-        >
-          (
-          )
-        </a>
-      </span>
-    </div>
-    <hr />
-  </div>
-  <div
-    className="container-fluid item"
-  >
-    <div
-      className="list-inline"
-    >
-      <span
-        className="list-inline-item"
-      >
-        <a
-          className="h5 text-muted"
-          href={undefined}
-        >
-          2
-        </a>
-      </span>
-      <span
-        className="list-inline-item"
-      >
-        <button
-          className="btn btn-outline-danger btn-sm"
-          onClick={[Function]}
-          type="button"
-        >
-          Dismiss
-        </button>
-      </span>
-    </div>
-    <div
-      className="list-inline"
-    >
-      <span
-        className="list-inline-item"
-      >
-        Author: 
-        2
-      </span>
-      <span
-        className="list-inline-item"
-      >
-        Created: 
-        21 days ago
-      </span>
-      <span
-        className="list-inline-item"
-      >
-        Comments: 
-        1
-      </span>
-      <span
-        className="list-inline-item"
-      >
-        Points: 
-        2
-      </span>
-      <span
-        className="list-inline-item"
-      >
-        <a
-          className="text-muted"
-          href={undefined}
-        >
-          (
-          )
-        </a>
-      </span>
-    </div>
-    <hr />
-  </div>
-  <nav
-    aria-label="Page navigation example"
-  >
-    <ul
-      className="pagination"
-    >
-      <li
-        className="page-item disabled"
-      >
-        <a
-          aria-label="Previous"
-          className="page-link"
-          href="/test"
-        >
-          <span
-            aria-hidden="true"
-          >
-            «
-          </span>
-          <span
-            className="sr-only"
-          >
-            Previous
-          </span>
-        </a>
-      </li>
-      <li
-        className="page-item"
-      >
-        <a
-          className="page-link"
-          href="/test"
-        >
-          0
-        </a>
-      </li>
-      <li
-        className="page-item"
-      >
-        <a
-          className="page-link"
-          href="/test"
-        >
-          1
-        </a>
-      </li>
-      <li
-        className="page-item"
-      >
-        <a
-          className="page-link"
-          href="/test"
-        >
-          2
-        </a>
-      </li>
-      <li
-        className="page-item disabled"
-      >
-        <a
-          aria-label="Next"
-          className="page-link"
-          href="/test"
-        >
-          <span
-            aria-hidden="true"
-          >
-            »
-          </span>
-          <span
-            className="sr-only"
-          >
-            Next
-          </span>
-        </a>
-      </li>
-    </ul>
-  </nav>
+  <Item
+    isFavorite={[Function]}
+    item={
+      Object {
+        "author": "1",
+        "created_at": "2018-04-03T09:35:47.000Z",
+        "num_comments": 1,
+        "objectID": "y",
+        "points": 2,
+        "title": "1",
+      }
+    }
+    key="y"
+    onAddFavorite={[Function]}
+    onRemoveFavorite={[Function]}
+  />
+  <Item
+    isFavorite={[Function]}
+    item={
+      Object {
+        "author": "2",
+        "created_at": "2018-04-03T09:35:47.000Z",
+        "num_comments": 1,
+        "objectID": "z",
+        "points": 2,
+        "title": "2",
+      }
+    }
+    key="z"
+    onAddFavorite={[Function]}
+    onRemoveFavorite={[Function]}
+  />
+  <Connect(Paginator) />
 </div>
 `;

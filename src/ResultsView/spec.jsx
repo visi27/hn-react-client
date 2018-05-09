@@ -1,14 +1,14 @@
-import { configure, mount } from 'enzyme';
+import { configure, shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
+import toJson from 'enzyme-to-json';
 import React from 'react';
-import ReactDom from 'react-dom';
-import renderer from 'react-test-renderer';
 import algolia from '../_config/algolia';
-import Table from './presenter';
+import Item from './Item';
+import ResultsView from './presenter';
 
 configure({ adapter: new Adapter() });
 
-describe('Table', () => {
+describe('ResultsView', () => {
   const props = {
     result: {
       hits: [
@@ -34,20 +34,14 @@ describe('Table', () => {
       searchTerm: algolia.DEFAULT_QUERY,
     },
   };
-
-  it('renders without crashing', () => {
-    const div = document.createElement('div');
-    ReactDom.render(<Table {...props} />, div);
-  });
-
   test('has valid snapshot', () => {
-    const component = renderer.create(<Table {...props} />);
-    const tree = component.toJSON();
+    const component = shallow(<ResultsView {...props} />);
+    const tree = toJson(component);
     expect(tree).toMatchSnapshot();
   });
 
   it('shows two items on the list', () => {
-    const element = mount(<Table {...props} />);
-    expect(element.find('.item').length).toBe(2);
+    const element = shallow(<ResultsView {...props} />);
+    expect(element.find(Item).length).toBe(2);
   });
 });

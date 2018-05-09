@@ -2,11 +2,11 @@
 
 exports[`Nav has valid snapshot 1`] = `
 <li
-  className="nav-item"
+  className="nav-item active"
 >
   <a
     className="nav-link "
-    href="#"
+    href="/"
     onClick={[Function]}
   >
     testLink

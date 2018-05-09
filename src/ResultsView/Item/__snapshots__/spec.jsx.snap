@@ -21,11 +21,24 @@ exports[`Item has a valid snapshot 1`] = `
       className="list-inline-item"
     >
       <button
-        className="btn btn-outline-danger btn-sm"
+        className=""
+        data-react-toolbox="button"
+        disabled={false}
+        href={undefined}
         onClick={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchStart={[Function]}
         type="button"
       >
-        Dismiss
+        <span
+          aria-label=""
+          className="material-icons"
+          data-react-toolbox="font-icon"
+        >
+          favorite
+        </span>
       </button>
     </span>
   </div>
@@ -42,7 +55,7 @@ exports[`Item has a valid snapshot 1`] = `
       className="list-inline-item"
     >
       Created: 
-      21 days ago
+      a month ago
     </span>
     <span
       className="list-inline-item"
