@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import Nav from '../Nav/index';
-import Table from '../Table/index';
+import ResultsView from '../ResultsView/index';
 import './style.css';
 
 class App extends Component {
@@ -21,7 +21,7 @@ class App extends Component {
       <div>
         <Nav />
         <main role="main" className="mt-3">
-          <Table />
+          <ResultsView />
         </main>
       </div>
     );
