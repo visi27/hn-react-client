@@ -1,4 +1,7 @@
 import localStorageKey from '../../_config/localstorage';
+import getStorage from '../Storage';
+
+const storage = getStorage();
 
 export class Favorites {
   constructor(favorites = []) {
@@ -11,24 +14,24 @@ export class Favorites {
 
   // eslint-disable-next-line
   getFavoritesFromLocalStorage() {
-    if (localStorage.getItem(localStorageKey)) {
+    if (storage.getItem(localStorageKey)) {
       return JSON.parse(localStorage.getItem(localStorageKey));
     }
 
-    localStorage.setItem(localStorageKey, JSON.stringify([]));
+    storage.setItem(localStorageKey, JSON.stringify([]));
     return [];
   }
 
   add(id) {
     this.favorites = [...this.favorites, id];
 
-    localStorage.setItem(localStorageKey, JSON.stringify(this.favorites));
+    storage.setItem(localStorageKey, JSON.stringify(this.favorites));
   }
 
   remove(id) {
     this.favorites = this.favorites.filter(e => e !== id);
 
-    localStorage.setItem(localStorageKey, JSON.stringify(this.favorites));
+    storage.setItem(localStorageKey, JSON.stringify(this.favorites));
   }
 
   isFavorite(id) {
