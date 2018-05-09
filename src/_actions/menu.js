@@ -1,4 +1,4 @@
-import { MENU_LOAD } from '../constants/actionTypes';
+import { MENU_LOAD } from '../_constants/actionTypes';
 
 const loadMenu = () => ({
   type: MENU_LOAD,

@@ -1,10 +1,10 @@
+import { configure, mount } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
 import React from 'react';
 import ReactDom from 'react-dom';
 import renderer from 'react-test-renderer';
-import { mount, configure } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
+import * as menuTypes from '../../../_constants/menu';
 import NavbarDropdownLink from './presenter';
-import * as menuTypes from '../../../constants/menu';
 
 configure({ adapter: new Adapter() });
 

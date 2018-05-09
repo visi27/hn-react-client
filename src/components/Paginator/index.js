@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { nextPage, prevPage, goToPage } from '../../actions/result';
+import { goToPage, nextPage, prevPage } from '../../_actions/result';
 import Paginator from './presenter';
 
 function mapStateToProps(state) {

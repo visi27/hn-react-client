@@ -1,4 +1,4 @@
-import { localStorageKey } from '../../config';
+import localStorageKey from '../../_config/localstorage';
 
 export class Favorites {
   constructor(favorites = []) {

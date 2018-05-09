@@ -1,4 +1,4 @@
-import * as menuTypes from '../constants/menu';
+import * as menuTypes from '../_constants/menu';
 
 export default [
   {

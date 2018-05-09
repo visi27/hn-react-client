@@ -1,9 +1,9 @@
-import { createStore, applyMiddleware } from 'redux';
-import { createLogger } from 'redux-logger';
-import thunk from 'redux-thunk';
 import createHistory from 'history/createBrowserHistory';
 import { routerMiddleware } from 'react-router-redux';
-import rootReducer from '../reducers/index';
+import { applyMiddleware, createStore } from 'redux';
+import { createLogger } from 'redux-logger';
+import thunk from 'redux-thunk';
+import rootReducer from '../_reducers/index';
 
 const enhancer = applyMiddleware(thunk, routerMiddleware(createHistory()), createLogger());
 

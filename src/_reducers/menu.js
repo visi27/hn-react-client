@@ -1,5 +1,5 @@
-import { MENU_LOAD } from '../constants/actionTypes';
-import MenuConfig from '../config/menu';
+import MenuConfig from '../_config/menu';
+import { MENU_LOAD } from '../_constants/actionTypes';
 
 const initialState = {
   elements: MenuConfig,

@@ -1,14 +1,13 @@
-import { createLogger } from 'redux-logger';
-import { createStore, applyMiddleware, compose } from 'redux';
-/* eslint-disable import/no-extraneous-dependencies */
-import { persistState } from 'redux-devtools';
-/* eslint-enable import/no-extraneous-dependencies */
-import thunk from 'redux-thunk';
 import createHistory from 'history/createBrowserHistory';
 import { routerMiddleware } from 'react-router-redux';
-
-import DevTools from '../containers/DevTools';
-import rootReducer from '../reducers/index';
+import { applyMiddleware, compose, createStore } from 'redux';
+/* eslint-disable import/no-extraneous-dependencies */
+import { persistState } from 'redux-devtools';
+import { createLogger } from 'redux-logger';
+/* eslint-enable import/no-extraneous-dependencies */
+import thunk from 'redux-thunk';
+import DevTools from '../_containers/DevTools';
+import rootReducer from '../_reducers/index';
 
 function getDebugSessionKey() {
   // You can write custom logic here!
@@ -31,9 +30,9 @@ export default function configureStore(initialState) {
 
   // Hot reload reducers (requires Webpack or Browserify HMR to be enabled)
   if (module.hot) {
-    module.hot.accept('../reducers', () => {
+    module.hot.accept('../_reducers', () => {
       /* eslint-disable global-require */
-      const nextReducer = require('../reducers');
+      const nextReducer = require('../_reducers');
       /* eslint-enable global-require */
       store.replaceReducer(nextReducer);
     });

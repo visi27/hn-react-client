@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
+import { setSearch, submitSearch } from '../../_actions/search';
 import Nav from './presenter';
-import { setSearch, submitSearch } from '../../actions/search';
 
 const mapStateToProps = (state) => {
   const { elements } = state.menu;

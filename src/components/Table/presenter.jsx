@@ -1,7 +1,7 @@
 import { PropTypes } from 'prop-types';
 import React from 'react';
-import conf from '../../config';
-import { favoritesFactory } from '../../services/Favorites/Favorites';
+import algolia from '../../_config/algolia';
+import { favoritesFactory } from '../../_services/Favorites/Favorites';
 import Paginator from '../Paginator/index';
 import Item from './Item';
 
@@ -35,7 +35,7 @@ Table.defaultProps = {
     hits: [],
     page: 0,
     nbPages: 0,
-    searchTerm: conf.DEFAULT_QUERY,
+    searchTerm: algolia.DEFAULT_QUERY,
   },
 };
 

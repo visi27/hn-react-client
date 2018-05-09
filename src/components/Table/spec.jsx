@@ -1,10 +1,10 @@
+import { configure, mount } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
 import React from 'react';
 import ReactDom from 'react-dom';
 import renderer from 'react-test-renderer';
-import { mount, configure } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
+import algolia from '../../_config/algolia';
 import Table from './presenter';
-import conf from '../../config';
 
 configure({ adapter: new Adapter() });
 
@@ -31,7 +31,7 @@ describe('Table', () => {
       ],
       page: 0,
       nbPages: 0,
-      searchTerm: conf.DEFAULT_QUERY,
+      searchTerm: algolia.DEFAULT_QUERY,
     },
   };
 

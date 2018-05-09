@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import loadMenu from '../actions/menu';
-import { fetchData } from '../actions/result';
+import loadMenu from '../_actions/menu';
+import { fetchData } from '../_actions/result';
 import './App.css';
 import Nav from './Nav/index';
 import Table from './Table/index';

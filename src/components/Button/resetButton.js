@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { resetSearch } from '../../actions/search';
+import { resetSearch } from '../../_actions/search';
 import Button from './presenter';
 
 const mapDispatchToProps = dispatch => ({

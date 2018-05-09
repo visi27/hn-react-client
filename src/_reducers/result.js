@@ -1,11 +1,11 @@
-import * as actionTypes from '../constants/actionTypes';
-import conf from '../config';
+import algolia from '../_config/algolia';
+import * as actionTypes from '../_constants/actionTypes';
 
 const initialState = {
   hits: [],
   page: 0,
   nbPages: 0,
-  query: conf.DEFAULT_QUERY,
+  query: algolia.DEFAULT_QUERY,
 };
 
 export default function (state = initialState, action) {

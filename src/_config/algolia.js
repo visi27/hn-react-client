@@ -1,5 +1,4 @@
-export const localStorageKey = 'hn.favorites';
-export default {
+const algolia = {
   DEFAULT_QUERY: '',
   DEFAULT_HPP: '20',
 
@@ -9,3 +8,5 @@ export default {
   PARAM_PAGE: 'page=',
   PARAM_HPP: 'hitsPerPage=',
 };
+
+export default algolia;
