@@ -3,7 +3,7 @@ import Adapter from 'enzyme-adapter-react-16';
 import React from 'react';
 import ReactDom from 'react-dom';
 import renderer from 'react-test-renderer';
-import * as menuTypes from '../../_constants/menu';
+import * as menuTypes from '../_constants/menu';
 import Nav from './presenter';
 
 configure({ adapter: new Adapter() });

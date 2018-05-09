@@ -1,13 +1,10 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import loadMenu from '../_actions/menu';
-import { fetchData } from '../_actions/result';
-import './App.css';
-import Nav from './Nav/index';
-import Table from './Table/index';
+import Nav from '../Nav/index';
+import Table from '../Table/index';
+import './style.css';
 
-export class App extends Component {
+class App extends Component {
   componentDidMount() {
     this.props.onLoad();
   }
@@ -39,14 +36,4 @@ App.propTypes = {
   }).isRequired,
 };
 
-const mapDispatchToProps = dispatch => ({
-  onLoad() {
-    dispatch(loadMenu());
-    dispatch(fetchData({}));
-  },
-  onLocationChange() {
-    dispatch(fetchData({}));
-  },
-});
-
-export default connect(null, mapDispatchToProps)(App);
+export default App;

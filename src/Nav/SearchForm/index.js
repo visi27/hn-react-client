@@ -1,13 +1,13 @@
 import { connect } from 'react-redux';
 import { setSearch, submitSearch } from '../../_actions/search';
-import Nav from './presenter';
+import Search from './presenter';
 
-const mapStateToProps = (state) => {
-  const { elements } = state.menu;
+function mapStateToProps(state) {
+  const { searchTerm } = state.search;
   return {
-    elements,
+    searchTerm,
   };
-};
+}
 
 const mapDispatchToProps = dispatch => ({
   onSearchChange(event) {
@@ -17,4 +17,5 @@ const mapDispatchToProps = dispatch => ({
     dispatch(submitSearch());
   },
 });
-export default connect(mapStateToProps, mapDispatchToProps)(Nav);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Search);

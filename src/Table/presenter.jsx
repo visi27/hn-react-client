@@ -1,8 +1,8 @@
 import { PropTypes } from 'prop-types';
 import React from 'react';
-import algolia from '../../_config/algolia';
-import { favoritesFactory } from '../../_services/Favorites/Favorites';
 import Paginator from '../Paginator/index';
+import algolia from '../_config/algolia';
+import { favoritesFactory } from '../_services/Favorites/Favorites';
 import Item from './Item';
 
 const favorites = favoritesFactory();

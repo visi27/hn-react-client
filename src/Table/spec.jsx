@@ -3,7 +3,7 @@ import Adapter from 'enzyme-adapter-react-16';
 import React from 'react';
 import ReactDom from 'react-dom';
 import renderer from 'react-test-renderer';
-import algolia from '../../_config/algolia';
+import algolia from '../_config/algolia';
 import Table from './presenter';
 
 configure({ adapter: new Adapter() });

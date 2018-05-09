@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import v4 from 'uuid';
-import * as menuTypes from '../../_constants/menu';
 import Link from '../Link/presenter';
+import * as menuTypes from '../_constants/menu';
 import NavbarDropdownLink from './NavbarDropdownLink/presenter';
 import NavbarLink from './NavbarLink/presenter';
 import NavbarToggle from './NavbarToggle/presenter';
