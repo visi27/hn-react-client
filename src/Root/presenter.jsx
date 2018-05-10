@@ -7,6 +7,7 @@ import ConnectedApp from '../App';
 import Login from '../Login';
 import DevTools from '../_containers/DevTools';
 import history from '../_helpers/history';
+import PrivateRoute from '../_hoc/PrivateRoute';
 
 const Root = ({ store, dev }) => (
   <Provider store={store}>
@@ -15,7 +16,7 @@ const Root = ({ store, dev }) => (
         {dev ? <Route path="/" component={DevTools} /> : ''}
         <Switch>
           <Route path="/login" component={Login} />
-          <Route path="/" render={props => <ConnectedApp {...props} />} />
+          <PrivateRoute path="/" component={ConnectedApp} />
         </Switch>
       </div>
     </ConnectedRouter>
