@@ -24,4 +24,10 @@ export default [
     href: '/show',
     disabled: false,
   },
+  {
+    title: 'Favorites',
+    type: menuTypes.LINK_MENU_TYPE,
+    href: '/favorites',
+    disabled: false,
+  },
 ];

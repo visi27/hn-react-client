@@ -8,6 +8,7 @@ import Login from '../Login';
 import DevTools from '../_containers/DevTools';
 import history from '../_helpers/history';
 import PrivateRoute from '../_hoc/PrivateRoute';
+import Favorites from '../Favorites/presenter';
 
 const Root = ({ store, dev }) => (
   <Provider store={store}>
@@ -16,7 +17,8 @@ const Root = ({ store, dev }) => (
         {dev ? <Route path="/" component={DevTools} /> : ''}
         <Switch>
           <Route path="/login" component={Login} />
-          <PrivateRoute path="/" component={ConnectedApp} />
+          <PrivateRoute path="/favorites" component={Favorites} />
+          <Route path="/" render={props => <ConnectedApp {...props} />} />
         </Switch>
       </div>
     </ConnectedRouter>
