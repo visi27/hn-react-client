@@ -19,7 +19,7 @@ PrivateRoute.propTypes = {
   location: PropTypes.shape({
     pathname: PropTypes.string,
   }).isRequired,
-  component: PropTypes.element.isRequired,
+  component: PropTypes.oneOfType([PropTypes.element, PropTypes.func]).isRequired,
 };
 
 export default PrivateRoute;
