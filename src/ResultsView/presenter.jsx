@@ -6,6 +6,7 @@ import { favoritesFactory } from '../_services/Favorites/Favorites';
 import Item from './Item';
 
 const favorites = favoritesFactory();
+
 const Table = ({ result }) => (
   <div className="container-fluid">
     {result.hits.map(item => (
