@@ -16,7 +16,7 @@ const Item = ({
       </span>
       <span className="list-inline-item">
         <Favorite
-          itemId={item.objectID}
+          item={item}
           isFavorite={isFavorite}
           onAddFavorite={onAddFavorite}
           onRemoveFavorite={onRemoveFavorite}

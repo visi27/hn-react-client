@@ -11,11 +11,13 @@ class Favorite extends Component {
   constructor(props) {
     super(props);
 
-    const { itemId, isFavorite } = props;
+    const { item, isFavorite } = props;
 
     this.state = {
       isLoading: false,
-      isFavorite: isFavorite(itemId),
+      isFavorite: isFavorite(item.objectID),
+      isError: false,
+      error: '',
     };
   }
 
@@ -24,35 +26,58 @@ class Favorite extends Component {
   }
 
   render() {
-    const { itemId, onAddFavorite, onRemoveFavorite } = this.props;
-    const { isLoading, isFavorite } = this.state;
+    const { item, onAddFavorite, onRemoveFavorite } = this.props;
+    const {
+      isLoading, isFavorite, isError, error,
+    } = this.state;
+
     const FavIcon = isFavorite ? (
       <IconHeart
         style={{ color: '#F4A261' }}
         onClick={() => {
           this.setState({ isLoading: true });
-          onRemoveFavorite(itemId);
-          setTimeout(() => this.setState({ isLoading: false, isFavorite: false }), 1000);
-          // this.forceUpdate();
+          onRemoveFavorite(item)
+            .then(() => {
+              this.setState({ isLoading: false, isFavorite: false });
+            })
+            .catch((err) => {
+              this.setState({ isError: true, error: err });
+            });
         }}
       />
     ) : (
       <IconHeart
         onClick={() => {
           this.setState({ isLoading: true });
-          onAddFavorite(itemId);
-          setTimeout(() => this.setState({ isLoading: false, isFavorite: true }), 1000);
-          // this.forceUpdate();
+          onAddFavorite(item)
+            .then(() => {
+              this.setState({ isLoading: false, isFavorite: true });
+            })
+            .catch((err) => {
+              console.log(err);
+              this.setState({ isError: true, error: err });
+            });
         }}
       />
     );
 
-    return isLoading ? Loading : FavIcon;
+    const returnComponent = isLoading ? Loading : FavIcon;
+    return isError ? <span>{error.toString()}</span> : returnComponent;
   }
 }
 
 Favorite.propTypes = {
-  itemId: PropTypes.string.isRequired,
+  item: PropTypes.shape({
+    created_at: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    title_highlighted: PropTypes.string,
+    url: PropTypes.string,
+    author: PropTypes.string.isRequired,
+    points: PropTypes.number.isRequired,
+    story_text: PropTypes.string,
+    num_comments: PropTypes.number.isRequired,
+    objectID: PropTypes.string.isRequired,
+  }).isRequired,
   isFavorite: PropTypes.func,
   onAddFavorite: PropTypes.func,
   onRemoveFavorite: PropTypes.func,

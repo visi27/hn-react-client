@@ -3,6 +3,8 @@ import getStorage from '../Storage';
 
 const storage = getStorage();
 
+const user = JSON.parse(storage.getItem('user'));
+
 export class Favorites {
   constructor(favorites = []) {
     this.add = this.add.bind(this);
@@ -22,16 +24,52 @@ export class Favorites {
     return [];
   }
 
-  add(id) {
-    this.favorites = [...this.favorites, id];
+  add(item) {
+    const requestOptions = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${user.token}`,
+      },
+      body: JSON.stringify(item),
+    };
 
-    storage.setItem(localStorageKey, JSON.stringify(this.favorites));
+    return fetch('http://localhost:8080/app_dev.php/api/v2.0/favorites/', requestOptions)
+      .then((response) => {
+        if (!response.ok) {
+          return Promise.reject(response.statusText);
+        }
+        return response.json();
+      })
+      .then(() => {
+        this.favorites = [...this.favorites, item.objectID];
+        storage.setItem(localStorageKey, JSON.stringify(this.favorites));
+      });
   }
 
-  remove(id) {
-    this.favorites = this.favorites.filter(e => e !== id);
+  remove(item) {
+    const requestOptions = {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${user.token}`,
+      },
+    };
 
-    storage.setItem(localStorageKey, JSON.stringify(this.favorites));
+    return fetch(
+      `http://localhost:8080/app_dev.php/api/v2.0/favorites/${item.objectID}`,
+      requestOptions,
+    )
+      .then((response) => {
+        if (!response.ok) {
+          return Promise.reject(response.statusText);
+        }
+        return response.text();
+      })
+      .then(() => {
+        this.favorites = this.favorites.filter(e => e !== item.objectID);
+        storage.setItem(localStorageKey, JSON.stringify(this.favorites));
+      });
   }
 
   isFavorite(id) {
