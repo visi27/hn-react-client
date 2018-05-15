@@ -5,7 +5,7 @@ import userService from '../../_services/User/index';
 
 const WithAuth = (props) => {
   const { component: Component, ...rest } = props;
-  return userService.isAuthenticated ? (
+  return userService.isAuthenticated() ? (
     <Component {...rest} />
   ) : (
     <Redirect to={{ pathname: '/login', state: { from: props.location } }} />
