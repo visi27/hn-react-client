@@ -47,7 +47,7 @@ Item.propTypes = {
     author: PropTypes.string.isRequired,
     points: PropTypes.number.isRequired,
     story_text: PropTypes.string,
-    num_comments: PropTypes.number.isRequired,
+    num_comments: PropTypes.number,
     objectID: PropTypes.string.isRequired,
   }).isRequired,
   isFavorite: PropTypes.func,

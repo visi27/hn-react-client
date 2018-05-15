@@ -12,8 +12,8 @@ const loaderWrapper = {
   height: '50px',
   top: '50%',
   left: '50%',
-  'margin-left': '-50px' /* margin is -0.5 * dimension */,
-  'margin-top': '-25px',
+  marginLeft: '-50px' /* margin is -0.5 * dimension */,
+  marginTop: '-25px',
 };
 
 const Loading = (
