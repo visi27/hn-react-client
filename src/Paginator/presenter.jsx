@@ -9,7 +9,7 @@ const Paginator = ({
   return (
     <nav aria-label="Page navigation example">
       <ul className="pagination">
-        <li className={`page-item ${currentPage > 1 ? '' : 'disabled'}`}>
+        <li className={`page-item ${currentPage > 0 ? '' : 'disabled'}`}>
           <a
             className="page-link"
             href="/"
@@ -24,7 +24,7 @@ const Paginator = ({
           </a>
         </li>
         <li className="page-item active">
-          <span className="page-link">{currentPage}</span>
+          <span className="page-link">{currentPage + 1}</span>
         </li>
         <li className="page-item">
           <a
@@ -35,7 +35,7 @@ const Paginator = ({
               onGoToPage(currentPage + 1);
             }}
           >
-            {currentPage + 1}
+            {currentPage + 2}
           </a>
         </li>
         <li className="page-item">
@@ -47,7 +47,7 @@ const Paginator = ({
               onGoToPage(currentPage + 2);
             }}
           >
-            {currentPage + 2}
+            {currentPage + 3}
           </a>
         </li>
         <li className={`page-item ${currentPage < totPages ? '' : 'disabled'}`}>

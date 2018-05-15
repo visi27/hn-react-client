@@ -6,7 +6,7 @@ export const receiveResults = results => ({
   results,
 });
 
-export const fetchData = ({ query = algolia.DEFAULT_QUERY, page = 1 }) => (dispatch, getState) => {
+export const fetchData = ({ query = algolia.DEFAULT_QUERY, page = 0 }) => (dispatch, getState) => {
   const path = getState().router.location.pathname;
 
   let baseUrl;

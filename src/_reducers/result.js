@@ -3,8 +3,8 @@ import * as actionTypes from '../_constants/actionTypes';
 
 const initialState = {
   hits: [],
-  page: 0,
-  nbPages: 0,
+  page: 1,
+  nbPages: 1,
   query: algolia.DEFAULT_QUERY,
 };
 
