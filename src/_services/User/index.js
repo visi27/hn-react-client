@@ -71,6 +71,7 @@ const isAuthenticated = () => {
     return true;
   }
 
+  localStorage.removeItem('user');
   return false;
 };
 
