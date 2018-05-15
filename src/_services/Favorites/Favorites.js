@@ -3,8 +3,6 @@ import getStorage from '../Storage';
 
 const storage = getStorage();
 
-const user = JSON.parse(storage.getItem('user'));
-
 export class Favorites {
   constructor(favorites = []) {
     this.add = this.add.bind(this);
@@ -24,7 +22,35 @@ export class Favorites {
     return [];
   }
 
+  getFavoritesFromAPI() {
+    const user = JSON.parse(storage.getItem('user'));
+
+    const requestOptions = {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${user.token}`,
+      },
+    };
+
+    return fetch('http://localhost:8080/app_dev.php/api/v2.0/favorites/', requestOptions)
+      .then((response) => {
+        if (!response.ok) {
+          return Promise.reject(response.statusText);
+        }
+        return response.json();
+      })
+      .then((favorites) => {
+        favorites.items.forEach((item) => {
+          this.favorites = [...this.favorites, item.objectID];
+          storage.setItem(localStorageKey, JSON.stringify(this.favorites));
+        });
+      });
+  }
+
   add(item) {
+    const user = JSON.parse(storage.getItem('user'));
+
     const requestOptions = {
       method: 'POST',
       headers: {
@@ -48,6 +74,8 @@ export class Favorites {
   }
 
   remove(item) {
+    const user = JSON.parse(storage.getItem('user'));
+
     const requestOptions = {
       method: 'DELETE',
       headers: {
