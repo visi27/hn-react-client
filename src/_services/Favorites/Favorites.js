@@ -1,5 +1,6 @@
 import localStorageKey from '../../_config/localstorage';
 import getStorage from '../Storage';
+import userService from '../../_services/User/index';
 
 const storage = getStorage();
 
@@ -23,13 +24,16 @@ export class Favorites {
   }
 
   getFavoritesFromAPI() {
-    const user = JSON.parse(storage.getItem('user'));
+    // Return empty array when user is not logged in
+    if (!userService.isAuthenticated()) {
+      return Promise.all([]);
+    }
 
     const requestOptions = {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${user.token}`,
+        Authorization: `Bearer ${userService.getToken()}`,
       },
     };
 
@@ -49,13 +53,15 @@ export class Favorites {
   }
 
   add(item) {
-    const user = JSON.parse(storage.getItem('user'));
-
+    // Reject immediately if user is not logge din
+    if (!userService.isAuthenticated()) {
+      return Promise.reject(new Error('Unauthorized'));
+    }
     const requestOptions = {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${user.token}`,
+        Authorization: `Bearer ${userService.getToken()}`,
       },
       body: JSON.stringify(item),
     };
@@ -74,13 +80,15 @@ export class Favorites {
   }
 
   remove(item) {
-    const user = JSON.parse(storage.getItem('user'));
-
+    // Reject immediately if user is not logge din
+    if (!userService.isAuthenticated()) {
+      return Promise.reject(new Error('Unauthorized'));
+    }
     const requestOptions = {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${user.token}`,
+        Authorization: `Bearer ${userService.getToken()}`,
       },
     };
 
