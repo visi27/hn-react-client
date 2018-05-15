@@ -54,7 +54,6 @@ class Favorite extends Component {
               this.setState({ isLoading: false, isFavorite: true });
             })
             .catch((err) => {
-              console.log(err);
               this.setState({ isError: true, error: err });
             });
         }}
