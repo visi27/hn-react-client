@@ -75,11 +75,21 @@ const isAuthenticated = () => {
   return false;
 };
 
+const getToken = () => {
+  const user = localStorage.getItem('user');
+  if (!user) {
+    return '';
+  }
+
+  return JSON.parse(user).token;
+};
+
 const userService = {
   login,
   logout,
   getUser,
   isAuthenticated,
+  getToken,
 };
 
 export default userService;
