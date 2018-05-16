@@ -2,6 +2,7 @@ import { Base64 } from 'js-base64';
 import jwtDecode from 'jwt-decode';
 import { isNumber } from 'util';
 import authHeader from '../../_helpers/auth-header';
+import apiConfig from '../../_config/api';
 
 function login(username, password) {
   const requestOptions = {
@@ -12,7 +13,7 @@ function login(username, password) {
     },
   };
 
-  return fetch('http://symfony.local:8080/app_dev.php/api/tokens', requestOptions)
+  return fetch(`${apiConfig.base_url}/tokens`, requestOptions)
     .then((response) => {
       if (!response.ok) {
         return Promise.reject(response.statusText);
@@ -54,7 +55,7 @@ function getUser() {
     headers: authHeader(),
   };
 
-  return fetch('http://symfony.local:8080/app_dev.php/api/user', requestOptions).then(handleResponse);
+  return fetch(`${apiConfig.base_url}/user`, requestOptions).then(handleResponse);
 }
 
 const isAuthenticated = () => {

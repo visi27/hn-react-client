@@ -1,6 +1,7 @@
 import localStorageKey from '../../_config/localstorage';
 import getStorage from '../Storage';
 import userService from '../../_services/User/index';
+import apiConfig from '../../_config/api';
 
 const storage = getStorage();
 
@@ -37,7 +38,7 @@ export class Favorites {
       },
     };
 
-    return fetch('http://localhost:8080/app_dev.php/api/v2.0/favorites/', requestOptions)
+    return fetch(`${apiConfig.base_url}/favorites`, requestOptions)
       .then((response) => {
         if (!response.ok) {
           return Promise.reject(response.statusText);
@@ -66,7 +67,7 @@ export class Favorites {
       body: JSON.stringify(item),
     };
 
-    return fetch('http://localhost:8080/app_dev.php/api/v2.0/favorites/', requestOptions)
+    return fetch(`${apiConfig.base_url}/favorites`, requestOptions)
       .then((response) => {
         if (!response.ok) {
           return Promise.reject(response.statusText);
@@ -92,10 +93,7 @@ export class Favorites {
       },
     };
 
-    return fetch(
-      `http://localhost:8080/app_dev.php/api/v2.0/favorites/${item.objectID}`,
-      requestOptions,
-    )
+    return fetch(`${apiConfig.base_url}/favorites/${item.objectID}`, requestOptions)
       .then((response) => {
         if (!response.ok) {
           return Promise.reject(response.statusText);
