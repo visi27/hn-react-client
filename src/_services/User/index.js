@@ -13,7 +13,7 @@ function login(username, password) {
     },
   };
 
-  return fetch(`${apiConfig.base_url}/tokens`, requestOptions)
+  return fetch(`${apiConfig.get_token_url}`, requestOptions)
     .then((response) => {
       if (!response.ok) {
         return Promise.reject(response.statusText);
@@ -55,7 +55,7 @@ function getUser() {
     headers: authHeader(),
   };
 
-  return fetch(`${apiConfig.base_url}/user`, requestOptions).then(handleResponse);
+  return fetch(`${apiConfig.get_user_url}`, requestOptions).then(handleResponse);
 }
 
 const isAuthenticated = () => {
