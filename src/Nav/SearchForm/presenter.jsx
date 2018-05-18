@@ -17,6 +17,7 @@ class SearchForm extends Component {
         onSubmit={(e) => {
           e.preventDefault();
           onSearchSubmit();
+          this.textInput.blur();
         }}
       >
         <input
