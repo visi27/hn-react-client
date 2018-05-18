@@ -8,7 +8,7 @@ import { createDevTools } from 'redux-devtools';
 import LogMonitor from 'redux-devtools-log-monitor';
 import SliderMonitor from 'redux-slider-monitor';
 import DockMonitor from 'redux-devtools-dock-monitor';
-import ChartMonitor from 'redux-devtools-chart-monitor';
+
 /* eslint-enable import/no-extraneous-dependencies */
 
 const dockMonitor = (
@@ -24,7 +24,6 @@ const dockMonitor = (
   >
     <LogMonitor theme="tomorrow" />
     <SliderMonitor />
-    <ChartMonitor />
   </DockMonitor>
 );
 // createDevTools takes a monitor and produces a DevTools component

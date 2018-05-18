@@ -1,4 +1,4 @@
-import moment from 'moment';
+import distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
 import { PropTypes } from 'prop-types';
 import React from 'react';
 
@@ -25,7 +25,9 @@ const Item = ({
     </div>
     <div className="list-inline">
       <span className="list-inline-item">Author: {item.author}</span>
-      <span className="list-inline-item">Created: {moment(item.created_at).fromNow()}</span>
+      <span className="list-inline-item">
+        Created: {distanceInWordsToNow(new Date(item.created_at))}
+      </span>
       <span className="list-inline-item">Comments: {item.num_comments}</span>
       <span className="list-inline-item">Points: {item.points}</span>
       <span className="list-inline-item">

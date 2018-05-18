@@ -1,7 +1,7 @@
 import { PropTypes } from 'prop-types';
 import React, { Component } from 'react';
 import { Icon } from 'react-icons-kit';
-import { heart } from 'react-icons-kit/fa/';
+import { heart } from 'react-icons-kit/fa/heart';
 import ReactLoading from 'react-loading';
 
 const IconHeart = props => <Icon icon={heart} {...props} />;

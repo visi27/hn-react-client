@@ -11,6 +11,7 @@ const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const paths = require('./paths');
 const getClientEnvironment = require('./env');
 const CompressionPlugin = require('compression-webpack-plugin');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // It requires a trailing slash, or the file assets will get an incorrect path.
@@ -386,6 +387,10 @@ module.exports = {
       test: /\.js$|\.css$|\.html$/,
       threshold: 10240,
       minRatio: 0.8,
+    }),
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'static',
+      reportFilename: 'report.html',
     }),
   ],
   // Some libraries import Node modules but don't use them in the browser.
