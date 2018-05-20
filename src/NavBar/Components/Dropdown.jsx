@@ -129,6 +129,7 @@ export default class Dropdown extends Component {
     this.close = this.close.bind(this);
     this.open = this.open.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.handleDocumentClick = this.handleDocumentClick.bind(this);
   }
   componentWillMount() {
     document.addEventListener('click', this.handleDocumentClick);
