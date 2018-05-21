@@ -3,7 +3,14 @@ import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import ResultsView from '../ResultsView/index';
 import './style.css';
-import Test from '../NavBar/Test';
+import { Navbar } from '../NavBar/index';
+import menuConfig from '../_config/menu';
+
+const theme = {
+  primary: '#eb6864',
+  secondary: '#fff',
+  text: 'white',
+};
 
 class App extends Component {
   componentDidMount() {
@@ -20,7 +27,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Route path="/" component={Test} />
+        <Route path="/" render={props => <Navbar theme={theme} items={menuConfig} {...props} />} />
         <main role="main" className="mt-3">
           <ResultsView />
         </main>
