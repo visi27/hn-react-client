@@ -18,7 +18,7 @@ const loaderWrapper = {
 
 const Loading = (
   <div style={loaderWrapper}>
-    <ReactLoading type="bars" color="#F4A261" height="5em" width="5em" />
+    <ReactLoading type="bars" color="#F2742B" height="5em" width="5em" />
   </div>
 );
 
