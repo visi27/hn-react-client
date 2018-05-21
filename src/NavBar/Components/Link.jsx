@@ -16,7 +16,7 @@ const A = styled.a`
   margin: auto;
   padding: 10px;
   height: 100%;
-
+  white-space: nowrap;
   @media (max-width: 768px) {
     width: 100%;
   }
