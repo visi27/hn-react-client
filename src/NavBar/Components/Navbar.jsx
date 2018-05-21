@@ -7,6 +7,7 @@ import Dropdown from './Dropdown';
 import Link from './Link';
 import MenuIcon from './MenuIcon';
 import { transitionToAuto, transitionFromAuto, wasClicked } from '../utils/dom';
+import SearchForm from './SearchForm/';
 
 const Container = styled.div`
   width: 100%;
@@ -140,6 +141,11 @@ export default class Navbar extends Component {
     return <Brand title={title} href={href} />;
   }
   renderItems() {
+    const searchForm = (
+      <li className="text-truncate w-100">
+        <SearchForm />
+      </li>
+    );
     const { activeIndex, open } = this.state;
     let { items } = this.props;
     items = items.map((item, i) => {
@@ -148,6 +154,7 @@ export default class Navbar extends Component {
       } else if (item.dropdown) {
         return (
           <Dropdown
+            className="w-100"
             key={v4()}
             index={i}
             open={activeIndex === i}
@@ -160,7 +167,12 @@ export default class Navbar extends Component {
       }
       return <Link key={v4()} href={item.href} title={item.title} />;
     });
-    return <Items open={open}>{items}</Items>;
+    items.push(searchForm);
+    return (
+      <Items className="w-100" open={open}>
+        {items}
+      </Items>
+    );
   }
 
   render() {
@@ -193,6 +205,7 @@ export default class Navbar extends Component {
               {brand && this.renderBrand()}
             </Header>
             {items && this.renderItems()}
+            {/* <SearchForm /> */}
           </Nav>
         </Container>
       </ThemeProvider>

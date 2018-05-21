@@ -52,11 +52,7 @@ class Nav extends Component {
               }
             })}
           </ul>
-          <SearchForm
-            searchTerm={searchTerm}
-            onSearchChange={onSearchChange}
-            onSearchSubmit={onSearchSubmit}
-          />
+          <SearchForm />
         </div>
       </nav>
     );
