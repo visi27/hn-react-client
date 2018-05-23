@@ -1,4 +1,5 @@
 {
+  "parser": "babel-eslint",
   "extends": ["eslint-config-airbnb"],
   "env": {
     "browser": true,
@@ -6,6 +7,7 @@
     "jest": true
   },
   "rules": {
+    "strict": 0,
     "function-paren-newline": ["error", "multiline"],
     "import/no-extraneous-dependencies": ["error", { "devDependencies": true }]
   }
