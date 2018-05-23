@@ -14,7 +14,7 @@ const Root = ({ store, dev }) => (
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <div>
-        {dev ? <Route path="/" component={DevTools} /> : ''}
+        {dev ? <DevTools /> : ''}
         <Switch>
           <Route path="/login" component={Login} />
           <PrivateRoute path="/favorites" component={Favorites} />
