@@ -6,7 +6,7 @@ import * as menuTypes from '../_constants/menu';
 import NavbarDropdownLink from './NavbarDropdownLink/presenter';
 import NavbarLink from './NavbarLink/presenter';
 import NavbarToggle from './NavbarToggle/presenter';
-import SearchForm from './SearchForm/presenter';
+import SearchForm from './SearchForm/';
 
 class Nav extends Component {
   constructor(props) {
@@ -18,9 +18,7 @@ class Nav extends Component {
 
   render() {
     const { currentLocation } = this.state;
-    const {
-      elements, searchTerm, onSearchChange, onSearchSubmit, history,
-    } = this.props;
+    const { elements, history } = this.props;
 
     return (
       <nav className="navbar navbar-expand-md navbar-dark bg-dark">
@@ -80,9 +78,6 @@ Nav.propTypes = {
     pathname: PropTypes.string,
     search: PropTypes.string,
   }),
-  searchTerm: PropTypes.string,
-  onSearchChange: PropTypes.func.isRequired,
-  onSearchSubmit: PropTypes.func.isRequired,
 };
 
 Nav.defaultProps = {
@@ -92,7 +87,6 @@ Nav.defaultProps = {
     search: '',
   },
   elements: [],
-  searchTerm: '',
 };
 
 export default Nav;

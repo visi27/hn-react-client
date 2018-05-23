@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
 import Root from './Root/presenter';
 import './_scss/index.scss';
+
 // import { Router, Route, IndexRoute, browserHistory } from "react-router";
 // import { syncHistoryWithStore } from "react-router-redux";
 import configureStore from './_stores/configureStore.dev';

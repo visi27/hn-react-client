@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import ResultsView from '../ResultsView/index';
 import './style.css';
-import { Navbar } from '../NavBar/index';
+import NavBar from '../Bloomer/NavBar';
 import menuConfig from '../_config/menu';
 
 const theme = {
@@ -27,7 +27,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Route path="/" render={props => <Navbar theme={theme} items={menuConfig} {...props} />} />
+        <Route path="/" render={props => <NavBar theme={theme} items={menuConfig} {...props} />} />
         <main role="main" className="mt-3">
           <ResultsView />
         </main>
